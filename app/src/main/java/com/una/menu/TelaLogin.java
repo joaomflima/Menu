@@ -74,7 +74,7 @@ public class TelaLogin extends AppCompatActivity {
                     if (email.isEmpty() || senha.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Nenhum campo pode estar vazio!", Toast.LENGTH_LONG).show();
                     } else {
-                        url = "http://seuIP/webservice/login/logar.php";
+                        url = "http://192.168.0.109/webservice/login/logar.php";
                         parametros = "email=" + email + "&senha=" + senha;
                         new SolicitaDados().execute(url);
                     }
@@ -99,14 +99,37 @@ public class TelaLogin extends AppCompatActivity {
         protected void onPostExecute(String resultado) {
             //textView.SetText(resultado);
             //editText_email1.setText(resultado);
+            //editText_email1.setText(resultado);
+            //editText_email1.setText(dados[0] + " - " + dados[1] + " - " + dados[2]);
+
 
             if(resultado.contains("login_ok")) {
+
+                String[] dados = resultado.split(",");
                 Intent abreInicio = new Intent(TelaLogin.this, TelaInicial.class);
+                abreInicio.putExtra("id_usuario", dados[1]);
+                abreInicio.putExtra("nome_usuario", dados[2]);
                 startActivity(abreInicio);
+
             } else {
                 Toast.makeText(getApplicationContext(), "Email ou Senha estão incorretos!", Toast.LENGTH_LONG).show();
             }
         }
     }
+    /*
+    @Override
+    protected void onPause() {
+        super.OnPause();
+        finish();
+    }
+    */
 }
+
+/*
+https://www.flextool.com.br/tabela_cores.html  --> Site com código de cores.
+
+http://rogerdudler.github.io/git-guide/index.pt_BR.html   -- Tutorial Git
+
+https://try.github.io/levels/1/challenges/13
+ */
 
