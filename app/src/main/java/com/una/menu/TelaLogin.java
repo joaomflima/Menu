@@ -52,7 +52,10 @@ public class TelaLogin extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent abreSemLogar = new Intent(TelaLogin.this, TelaInicial.class);
+
+                abreSemLogar.putExtra("nome_usuario", "Visitante");
                 startActivity(abreSemLogar);
+
             }
         });
 
