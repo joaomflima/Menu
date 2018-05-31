@@ -13,13 +13,13 @@ import com.una.menu.model.Produto;
 import java.util.List;
 
 
-public class AdapterProdutos extends RecyclerView.Adapter<AdapterProdutos.MyViewHolder> {
+public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHolder> {
 
     // Atributos
     private List<Produto> listaProdutos;
 
     // Construtor
-    public AdapterProdutos(List<Produto> lista ) {
+    public ProdutoAdapter(List<Produto> lista ) {
         this.listaProdutos = lista;
     }
 

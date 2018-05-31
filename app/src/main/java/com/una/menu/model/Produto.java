@@ -20,6 +20,13 @@ public class Produto {
 
     }
 
+    // Contrutor 03
+    public Produto(String nome) {
+        this.nome = nome;
+        this.descricao = "Descrição do Produto";
+        this.preco = "R$00,00";
+    }
+
     // Getters and Setters
 
     public String getNome() {
