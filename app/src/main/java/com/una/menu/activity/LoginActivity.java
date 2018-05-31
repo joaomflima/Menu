@@ -1,4 +1,4 @@
-package com.una.menu;
+package com.una.menu.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +13,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class TelaLogin extends AppCompatActivity {
+import com.una.menu.Conexao;
+import com.una.menu.R;
+
+public class LoginActivity extends AppCompatActivity {
 
     // Variaveis que vão receber os objetos da tela.
     EditText editText_email1, editText_senha1;
@@ -27,7 +30,7 @@ public class TelaLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_login);
+        setContentView(R.layout.activity_login);
 
         // Recebe os ID's dos objetos da tela -----------------------------
         editText_email1 = findViewById(R.id.editText_email1);
@@ -41,7 +44,7 @@ public class TelaLogin extends AppCompatActivity {
         textView_cadastro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abreCadastro = new Intent(TelaLogin.this, TelaCadastro.class);
+                Intent abreCadastro = new Intent(LoginActivity.this, CadastroClienteActivity.class);
                 startActivity(abreCadastro);
             }
         });
@@ -51,7 +54,7 @@ public class TelaLogin extends AppCompatActivity {
         textView_semLogar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abreSemLogar = new Intent(TelaLogin.this, TelaInicial.class);
+                Intent abreSemLogar = new Intent(LoginActivity.this, BuscaActivity.class);
 
                 abreSemLogar.putExtra("nome_usuario", "Visitante");
                 startActivity(abreSemLogar);
@@ -109,7 +112,7 @@ public class TelaLogin extends AppCompatActivity {
             if(resultado.contains("login_ok")) {
 
                 String[] dados = resultado.split(",");
-                Intent abreInicio = new Intent(TelaLogin.this, TelaInicial.class);
+                Intent abreInicio = new Intent(LoginActivity.this, BuscaActivity.class);
                 abreInicio.putExtra("id_usuario", dados[1]);
                 abreInicio.putExtra("nome_usuario", dados[2]);
                 startActivity(abreInicio);

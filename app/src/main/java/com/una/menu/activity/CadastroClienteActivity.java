@@ -1,4 +1,4 @@
-package com.una.menu;
+package com.una.menu.activity;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,10 +10,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
-public class TelaCadastro extends AppCompatActivity {
+import com.una.menu.Conexao;
+import com.una.menu.R;
+
+public class CadastroClienteActivity extends AppCompatActivity {
 
     // Variaveis que vão receber os objetos da tela.
     EditText editText_nome, editText_email2, editText_senha2;
@@ -26,7 +28,7 @@ public class TelaCadastro extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tela_cadastro);
+        setContentView(R.layout.activity_cadastro_cliente);
 
         // Recebe os ID's dos objetos da tela;
         editText_nome = findViewById(R.id.editText_nome);
@@ -93,7 +95,7 @@ public class TelaCadastro extends AppCompatActivity {
             } else if(resultado.contains("registro_ok")) {
 
                 Toast.makeText(getApplicationContext(), "Registro concluído com sucesso!", Toast.LENGTH_LONG).show();
-                Intent abreInicio = new Intent(TelaCadastro.this, TelaLogin.class);
+                Intent abreInicio = new Intent(CadastroClienteActivity.this, LoginActivity.class);
                 startActivity(abreInicio);
 
             } else {
