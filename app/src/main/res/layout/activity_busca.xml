@@ -29,31 +29,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/listProdutos"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerProdutos"
         android:layout_width="368dp"
-        android:layout_height="391dp"
-        android:layout_marginBottom="8dp"
+        android:layout_height="324dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_nome" />
+        app:layout_constraintTop_toBottomOf="@+id/searchProduto" />
 
-    <Button
-        android:id="@+id/button_teste"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <SearchView
+        android:id="@+id/searchProduto"
+        android:layout_width="293dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="OK"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_nome" />
 
 </android.support.constraint.ConstraintLayout>

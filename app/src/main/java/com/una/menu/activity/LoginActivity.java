@@ -62,8 +62,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
         //
         button_logar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +78,8 @@ public class LoginActivity extends AppCompatActivity {
                     if (email.isEmpty() || senha.isEmpty()) {
                         Toast.makeText(getApplicationContext(), "Nenhum campo pode estar vazio!", Toast.LENGTH_LONG).show();
                     } else {
-                        url = "http://192.168.0.109/webservice/login/logar.php";
+                        //url = "http://192.168.0.109/webservice/login/logar.php";
+                        url = "https://menu-app.000webhostapp.com/webservice/login/logar.php";
                         parametros = "email=" + email + "&senha=" + senha;
                         new SolicitaDados().execute(url);
                     }

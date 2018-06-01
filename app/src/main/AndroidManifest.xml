@@ -21,7 +21,6 @@
         </activity>
         <activity android:name=".activity.CadastroClienteActivity" />
         <activity android:name=".activity.BuscaActivity" />
-        <activity android:name=".recyclerView"></activity>
     </application>
 
 </manifest>

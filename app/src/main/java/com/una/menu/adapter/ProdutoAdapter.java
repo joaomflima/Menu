@@ -12,7 +12,6 @@ import com.una.menu.model.Produto;
 
 import java.util.List;
 
-
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHolder> {
 
     // Atributos
@@ -39,7 +38,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         Produto produto = listaProdutos.get(position);
         holder.nome.setText(produto.getNome());
         holder.descricao.setText(produto.getDescricao());
-        holder.preco.setText(produto.getPreco());
+        holder.preco.setText(produto.getId_produto());
     }
 
     @Override

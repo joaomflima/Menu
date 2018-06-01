@@ -3,28 +3,37 @@ package com.una.menu.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
-import android.widget.Toast;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
-import com.una.menu.recyclerView;
+import com.una.menu.adapter.ProdutoAdapter;
+import com.una.menu.model.Produto;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BuscaActivity extends AppCompatActivity {
 
     private TextView textView_nome;
-
     private Button button_teste;
+    private SearchView searchProduto;
+    private RecyclerView recyclerProdutos;
+    private List<Produto> listaProduto = new ArrayList<>();
+    private String HOST = "https://menu-app.000webhostapp.com/webservice";
 
-    private ListView listProdutos;
-    private String[] produtos = new String[]{"Produto01", "Produto02", "Produto03",
-            "Produto04", "Produto05", "Produto06", "Produto07", "Produto08",
-            "Produto09"};
-
+    //Configurar adapter
+    ProdutoAdapter produtoAdapter = new ProdutoAdapter( listaProduto );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,43 +41,55 @@ public class BuscaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_busca);
 
         textView_nome = findViewById(R.id.textView_nome);
-        listProdutos = findViewById(R.id.listProdutos);
+        searchProduto = findViewById(R.id.searchProduto);
+        recyclerProdutos = findViewById(R.id.recyclerProdutos);
 
         String nomeUsuario = getIntent().getExtras().getString("nome_usuario");
         textView_nome.setText(nomeUsuario);
 
-        // Criar adaptador para a lista;
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(
-                getApplicationContext(),
-                android.R.layout.simple_list_item_1,
-                android.R.id.text1,
-                produtos
-        );
+        // Configurar SearchView
 
-        // Adiciona o adaptador para a lista;
-        listProdutos.setAdapter(adaptador);
+        searchProduto.setQueryHint("Buscar Produtos");
 
-        // Adiciona clique na lista;
-        listProdutos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String valorSelecionado = listProdutos.getItemAtPosition(position).toString();
-                Toast.makeText(getApplicationContext(), valorSelecionado, Toast.LENGTH_LONG).show();
-            }
-        });
+        // Lista de produtos
+        this.lerProdutos();
 
-        // Ir para RecyclerView
+        //Configurar RecycleView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerProdutos.setLayoutManager(layoutManager);
+        recyclerProdutos.setHasFixedSize(true);
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+        recyclerProdutos.setAdapter(produtoAdapter);
+    }
 
-        button_teste = (Button) findViewById(R.id.button_teste);
+    private void lerProdutos() {
 
-        button_teste.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        String url = HOST + "/readprodutos/read.php";
 
-                Intent abreRecyclerView = new Intent(getApplicationContext(), recyclerView.class);
-                startActivity(abreRecyclerView);
-            }
-        });
+        Ion.with(getBaseContext())
+                .load(url)
+                .asJsonArray()
+                .setCallback(new FutureCallback<JsonArray>() {
+                    @Override
+                    public void onCompleted(Exception e, JsonArray result) {
+
+                        for(int i = 0; i < result.size(); i++) {
+
+                            JsonObject obj = result.get(i).getAsJsonObject();
+
+                            //String nome = obj.get("nome").getAsString();
+                            //Produto p = new Produto(nome);
+
+                            Produto p = new Produto();
+                            p.setId_produto(obj.get("id_produto").getAsString());
+                            p.setNome(obj.get("nome").getAsString());
+
+                            listaProduto.add(p);
+                        }
+
+                        produtoAdapter.notifyDataSetChanged();
+                    }
+                });
     }
 }
