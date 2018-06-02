@@ -8,10 +8,12 @@
 
     <TextView
         android:id="@+id/textView_nome"
-        android:layout_width="123dp"
+        android:layout_width="227dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textSize="24sp"
+        android:text="Usuário"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,8 +46,8 @@
 
     <SearchView
         android:id="@+id/searchProduto"
-        android:layout_width="293dp"
-        android:layout_height="49dp"
+        android:layout_width="342dp"
+        android:layout_height="54dp"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"

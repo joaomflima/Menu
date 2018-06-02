@@ -48,12 +48,33 @@ public class BuscaActivity extends AppCompatActivity {
         textView_nome.setText(nomeUsuario);
 
         // Configurar SearchView
-
         searchProduto.setQueryHint("Buscar Produtos");
+        searchProduto.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+
+            String url = HOST + "/readprodutos/readpesquisa.php";
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                String produto = "%" + query + "%";
+                buscaProdutos(produto);
+
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //System.out.println("newText: "+ newText);
+                //System.out.println(produto);
+                return false;
+            }
+        });
 
 
         // Lista de produtos
         this.lerProdutos();
+        //this.buscaProdutos("%suco%");
+
 
         //Configurar RecycleView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
@@ -61,6 +82,41 @@ public class BuscaActivity extends AppCompatActivity {
         recyclerProdutos.setHasFixedSize(true);
         recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerProdutos.setAdapter(produtoAdapter);
+    }
+
+    private void buscaProdutos(String produto) {
+
+        String url = HOST + "/readprodutos/readpesquisa.php";
+        listaProduto.clear();
+
+        if (produto.length() > 0) {
+
+            Ion.with(getBaseContext())
+                    .load(url)
+                    .setBodyParameter("produto", produto)
+                    .asJsonArray()
+                    .setCallback(new FutureCallback<JsonArray>() {
+                        @Override
+                        public void onCompleted(Exception e, JsonArray result) {
+
+                            for (int i = 0; i < result.size(); i++) {
+
+                                JsonObject obj = result.get(i).getAsJsonObject();
+
+                                //String nome = obj.get("nome").getAsString();
+                                //Produto p = new Produto(nome);
+
+                                Produto p = new Produto();
+                                p.setId_produto(obj.get("id_produto").getAsString());
+                                p.setNome(obj.get("nome").getAsString());
+
+                                listaProduto.add(p);
+                            }
+
+                            produtoAdapter.notifyDataSetChanged();
+                        }
+                    });
+        }
     }
 
     private void lerProdutos() {
