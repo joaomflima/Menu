@@ -2,28 +2,29 @@ package com.una.menu.activity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.una.menu.Conexao;
+import com.google.gson.JsonObject;
+import com.koushikdutta.async.future.FutureCallback;
+import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
 
 public class CadastroClienteActivity extends AppCompatActivity {
 
     // Variaveis que vão receber os objetos da tela.
-    EditText editText_nome, editText_email2, editText_senha2;
-    Button button_cadastrar, button_cancelar;
+    EditText editNomeCad, editEmailCad, editSenhaCad, editSenhaConf;
+    Button btnCadastrar, btnCancelar;
+    ProgressBar progressCad;
 
     // Variaveis para conexão com web service.
-    String url = "";
-    String parametros = "";
+    String HOST = "https://menu-app.000webhostapp.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,83 +32,110 @@ public class CadastroClienteActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cadastro_cliente);
 
         // Recebe os ID's dos objetos da tela;
-        editText_nome = findViewById(R.id.editText_nome);
-        editText_email2 = findViewById(R.id.editText_email2);
-        editText_senha2 = findViewById(R.id.editText_senha2);
-        button_cadastrar = findViewById(R.id.button_cadastrar);
-        button_cancelar = findViewById(R.id.button_cancelar);
+        editNomeCad = findViewById(R.id.editNomeCad);
+        editEmailCad = findViewById(R.id.editEmailCad);
+        editSenhaCad = findViewById(R.id.editSenhaCad);
+        editSenhaConf = findViewById(R.id.editSenhaConf);
+        btnCadastrar = findViewById(R.id.btnCadastrar);
+        btnCancelar = findViewById(R.id.btnCancelar);
+        progressCad = findViewById(R.id.progressCad);
 
-        button_cancelar.setOnClickListener(new View.OnClickListener() {
+        // Desativa o ProgressBar
+        progressCad.setVisibility(View.GONE);
+
+        btnCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
 
-        button_cadastrar.setOnClickListener(new View.OnClickListener() {
+
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                ConnectivityManager connectivityManager = (ConnectivityManager)
-                        getSystemService(Context.CONNECTIVITY_SERVICE);
-                NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+                String nome = editNomeCad.getText().toString();
+                String email = editEmailCad.getText().toString();
+                String senha = editSenhaCad.getText().toString();
+                String senhaConf = editSenhaConf.getText().toString();
 
-                if (networkInfo != null && networkInfo.isConnected()) {
+                String URL = HOST + "/webservice/login/cadastrar.php";
 
-                    String nome = editText_nome.getText().toString();
-                    String email = editText_email2.getText().toString();
-                    String senha = editText_senha2.getText().toString();
+                if (nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
+                    Toast.makeText(CadastroClienteActivity.this, "Nenhum campo pode estar vazio",
+                            Toast.LENGTH_LONG).show();
+                } else {
 
-                    if (nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
-                        Toast.makeText(getApplicationContext(), "Nenhum campo pode estar vazio!", Toast.LENGTH_LONG).show();
+                    if(senha.equals(senhaConf)) {
+
+                        // Habilita o ProgressBar
+                        progressCad.setVisibility(View.VISIBLE);
+
+                        // DESABILITA o cursor
+                        editEmailCad.setCursorVisible(false);
+                        editSenhaCad.setCursorVisible(false);
+                        editSenhaCad.setCursorVisible(false);
+                        editSenhaConf.setCursorVisible(false);
+
+                        fechaTeclado();
+
+                        Ion.with(CadastroClienteActivity.this)
+                                .load(URL)
+                                .setBodyParameter("nome_app", nome)
+                                .setBodyParameter("email_app", email)
+                                .setBodyParameter("senha_app", senha)
+                                .asJsonObject()
+                                .setCallback(new FutureCallback<JsonObject>() {
+                                    @Override
+                                    public void onCompleted(Exception e, JsonObject result) {
+
+                                        String RETORNO = result.get("CADASTRO").getAsString();
+
+                                        try {
+                                            if(RETORNO.equals("EMAIL_ERRO")){
+                                                Toast.makeText(CadastroClienteActivity.this, "Este email já está cadastrado!", Toast.LENGTH_LONG).show();
+                                            } else if (RETORNO.equals("SUCESSO")){
+                                                Toast.makeText(CadastroClienteActivity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
+
+                                                Intent abreLogin = new Intent(CadastroClienteActivity.this, LoginActivity.class);
+                                                startActivity(abreLogin);
+
+                                            } else {
+                                                Toast.makeText(CadastroClienteActivity.this, "ERRO DESCONHECIDO", Toast.LENGTH_LONG).show();
+                                            }
+
+                                        } catch (Exception erro) {
+                                            Toast.makeText(CadastroClienteActivity.this, "Ops! Falha na conexão, " + erro, Toast.LENGTH_LONG).show();
+                                        }
+
+                                        // Desativa o ProgressBar
+                                        progressCad.setVisibility(View.GONE);
+                                        // Habilita o cursor
+                                        editEmailCad.setCursorVisible(true);
+                                        editSenhaCad.setCursorVisible(true);
+                                        editSenhaCad.setCursorVisible(true);
+                                        editSenhaConf.setCursorVisible(true);
+                                    }
+                                });
+
                     } else {
-                        //url = "http://192.168.0.109/webservice/login/registrar.php";
-                        url = "https://menu-app.000webhostapp.com/webservice/login/registrar.php";
-                        parametros = "nome=" + nome + "&email=" + email + "&senha=" + senha;
-                        new SolicitaDados().execute(url);
+                        Toast.makeText(CadastroClienteActivity.this, "As senhas não conferem", Toast.LENGTH_LONG).show();
                     }
 
-                } else {
-                    Toast.makeText(getApplicationContext(), "Nenhuma conexão foi detectada!", Toast.LENGTH_LONG).show();
                 }
 
             }
         });
     }
 
-    private class SolicitaDados extends AsyncTask<String, Void, String> {
-
-        @Override
-        protected String doInBackground(String... urls) {
-
-            return Conexao.postDados(urls[0], parametros);
-        }
-
-        //
-        @Override
-        protected void onPostExecute(String resultado) {
-
-            //editText_nome.setText(resultado);
-
-            if(resultado.contains("email_erro")) {
-
-                Toast.makeText(getApplicationContext(), "Este email já está cadastrado.", Toast.LENGTH_LONG).show();
-
-            } else if(resultado.contains("registro_ok")) {
-
-                Toast.makeText(getApplicationContext(), "Registro concluído com sucesso!", Toast.LENGTH_LONG).show();
-                Intent abreInicio = new Intent(CadastroClienteActivity.this, LoginActivity.class);
-                startActivity(abreInicio);
-
-            } else {
-                Toast.makeText(getApplicationContext(), "Ocorreu um erro.", Toast.LENGTH_LONG).show();
-            }
+    private void fechaTeclado() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
+
 }

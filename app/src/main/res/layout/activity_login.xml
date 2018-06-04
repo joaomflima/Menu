@@ -7,69 +7,87 @@
     tools:context=".activity.LoginActivity">
 
     <EditText
-        android:id="@+id/editText_email1"
+        android:id="@+id/editEmailLog"
         android:layout_width="255dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:gravity="center"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editText_senha1"
+        android:id="@+id/editSenhaLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_email1" />
+        app:layout_constraintTop_toBottomOf="@+id/editEmailLog" />
 
     <Button
-        android:id="@+id/button_logar"
+        android:id="@+id/btnLogar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="72dp"
         android:text="Logar"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText_senha1" />
+        app:layout_constraintTop_toBottomOf="@+id/editSenhaLog" />
 
     <TextView
-        android:id="@+id/textView_cadastro"
+        android:id="@+id/textCadastrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:text="Ainda não possui uma conta? Crie Uma!"
         android:textColor="#0000FF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_semLogar" />
+        app:layout_constraintTop_toBottomOf="@+id/textSemLog" />
 
     <TextView
-        android:id="@+id/textView_semLogar"
+        android:id="@+id/textSemLog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:text="Entre sem logar!"
         android:textColor="#0000FF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_logar" />
+        app:layout_constraintTop_toBottomOf="@+id/btnLogar" />
+
+    <ProgressBar
+        android:id="@+id/progressLogin"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editSenhaLog" />
 
 </android.support.constraint.ConstraintLayout>
