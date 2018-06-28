@@ -35,6 +35,7 @@ public class BuscaActivity extends AppCompatActivity {
     private List<Produto> listaProduto = new ArrayList<>();
     private String HOST = "https://menu-app.000webhostapp.com/webservice";
     private ProgressBar progressPesquisa;
+    private Button button_teste;
 
     //Configurar adapter
     ProdutoAdapter produtoAdapter = new ProdutoAdapter( listaProduto );
@@ -85,6 +86,20 @@ public class BuscaActivity extends AppCompatActivity {
         recyclerProdutos.setHasFixedSize(true);
         recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
         recyclerProdutos.setAdapter(produtoAdapter);
+
+        // teste menu lateral --------------
+
+        button_teste = findViewById(R.id.button_teste);
+
+        button_teste.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent abreMenu = new Intent(BuscaActivity.this, PrincipalActivity.class);
+                startActivity(abreMenu);
+            }
+        });
+
+        // teste menu lateral --------------
     }
 
     private void buscaProdutos(String produto) {

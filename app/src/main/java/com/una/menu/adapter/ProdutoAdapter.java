@@ -22,6 +22,11 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         this.listaProdutos = lista;
     }
 
+//    // Construtor2 Apagar
+//    public ProdutoAdapter(){
+//
+//    }
+
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,11 +44,16 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         holder.nome.setText(produto.getNome());
         holder.descricao.setText(produto.getDescricao());
         holder.preco.setText(produto.getPreco());
+
+//        holder.nome.setText("TesteNome"); // Apagar
+//        holder.descricao.setText("TesteDescricao"); // Apagar
+//        holder.preco.setText("2.50"); // Apagar
     }
 
     @Override
     public int getItemCount() {
         return listaProdutos.size();
+//        return 5; // Apagar
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
