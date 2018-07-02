@@ -7,6 +7,8 @@ public class Produto {
     private String nome;
     private String descricao;
     private String preco;
+    private String avaliacao;
+    private String imagem;
 
     // Construtor 01
     public Produto(String nome, String descricao, String preco) {
@@ -14,6 +16,7 @@ public class Produto {
         this.descricao = descricao;
         this.preco = preco;
     }
+
 
     // Contrutor 02
     public Produto(){
@@ -32,7 +35,6 @@ public class Produto {
     }
 
     // Getters and Setters
-
 
     public String getId_produto() {
         return id_produto;
@@ -64,5 +66,21 @@ public class Produto {
 
     public void setPreco(String preco) {
         this.preco = preco;
+    }
+
+    public String getAvaliacao() {
+        return avaliacao;
+    }
+
+    public void setAvaliacao(String avaliacao) {
+        this.avaliacao = avaliacao;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

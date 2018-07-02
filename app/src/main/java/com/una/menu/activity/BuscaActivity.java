@@ -47,7 +47,7 @@ public class BuscaActivity extends AppCompatActivity {
 
         textView_nome = findViewById(R.id.textView_nome);
         searchProduto = findViewById(R.id.searchProduto);
-        recyclerProdutos = findViewById(R.id.recyclerProdutos);
+        recyclerProdutos = findViewById(R.id.recyclerViewProdutos);
         progressPesquisa = findViewById(R.id.progressPesquisa);
 
         String nomeUsuario = getIntent().getExtras().getString("nome_usuario");

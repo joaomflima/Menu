@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -27,6 +29,8 @@ import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
 import com.una.menu.adapter.ProdutoAdapter;
+import com.una.menu.fragment.BuscaFragment;
+import com.una.menu.fragment.CadastLanchFragment;
 import com.una.menu.model.Produto;
 
 import java.util.ArrayList;
@@ -36,63 +40,71 @@ public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     // Variaveis
-    private SearchView searchProduto;
-    private RecyclerView recyclerProdutos;
-    private ProgressBar progressLoad;
-    private List<Produto> listaProduto = new ArrayList<>();
-    private String HOST = "https://menu-app.000webhostapp.com/webservice";
+//    private SearchView searchProduto;
+//    private RecyclerView recyclerProdutos;
+//    private ProgressBar progressLoad;
+//    private List<Produto> listaProduto = new ArrayList<>();
+//    private String HOST = "https://menu-app.000webhostapp.com/webservice";
+    private FrameLayout frameContainer;
 
 
     // Configurar Adapter
-    ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
+//    ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+        BuscaFragment buscaFragment = new BuscaFragment();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frameContainer, buscaFragment);
+        fragmentTransaction.commit();
+
         //----------------------------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------------------------
 
         // Variaveis
-        recyclerProdutos = findViewById(R.id.recyclerView);
-        searchProduto = findViewById(R.id.searchView5);
-        progressLoad = findViewById(R.id.progressProdutos);
+//        recyclerProdutos = findViewById(R.id.recyclerView);
+//        searchProduto = findViewById(R.id.searchView5);
+//        progressLoad = findViewById(R.id.progressProdutos);
+        frameContainer = findViewById(R.id.frameContainer);
 
         // Lista Produtos
-        this.lerProdutos();
+//        this.lerProdutos();
 
         // Configurar RecyclerView
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerProdutos.setLayoutManager(layoutManager);
-        recyclerProdutos.setHasFixedSize(true);
-        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-        recyclerProdutos.setAdapter(adapter);
+//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+//        recyclerProdutos.setLayoutManager(layoutManager);
+//        recyclerProdutos.setHasFixedSize(true);
+//        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
+//        recyclerProdutos.setAdapter(adapter);
 
-        progressLoad.setVisibility(View.VISIBLE);
+//        progressLoad.setVisibility(View.VISIBLE);
 
-        this.setTitle("Teste Titulo");
+        // Seta título
+//        this.setTitle("Teste Titulo");
 
         // Configura SearchView
-        searchProduto.setQueryHint("Pesquisar Produtos");
-        searchProduto.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
+//        searchProduto.setQueryHint("Pesquisar Produtos");
+//        searchProduto.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
 
-            @Override
-            public boolean onQueryTextSubmit(String query) {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//
+//                String produto = "%" + query + "%";
+//                buscaProdutos(produto);
+//
+//                return true;
+//            }
 
-                String produto = "%" + query + "%";
-                buscaProdutos(produto);
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //System.out.println("newText: "+ newText);
-                //System.out.println(produto);
-                return false;
-            }
-        });
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                //System.out.println("newText: "+ newText);
+//                //System.out.println(produto);
+//                return false;
+//            }
+//        });
 
         //----------------------------------------------------------------------------------------------------------------
         //----------------------------------------------------------------------------------------------------------------
@@ -125,7 +137,7 @@ public class PrincipalActivity extends AppCompatActivity
     //----------------------------------------------------------------------------------------------------------------
 
     // Lista Produtos quando a Activity é iniciada
-    private void lerProdutos() {
+    /*private void lerProdutos() {
 
 //        fechaTeclado();
 
@@ -157,19 +169,19 @@ public class PrincipalActivity extends AppCompatActivity
 
                                 listaProduto.add(p);
                             }
-                            adapter.notifyDataSetChanged();
+//                            adapter.notifyDataSetChanged();
 
 
                         } catch (Exception erro) {
                             Toast.makeText(getApplicationContext(), "Ops! Erro, " + erro, Toast.LENGTH_LONG).show();
                         }
 
-                        progressLoad.setVisibility(View.GONE);
+//                        progressLoad.setVisibility(View.GONE);
                     }
                 });
-    }
+    }*/
 
-    private void buscaProdutos(String produto) {
+    /*private void buscaProdutos(String produto) {
 
 //        fechaTeclado();
 
@@ -203,9 +215,9 @@ public class PrincipalActivity extends AppCompatActivity
                                     p.setDescricao(obj.get("descricao").getAsString());
                                     p.setPreco(obj.get("preco").getAsString());
 
-                                    listaProduto.add(p);
+//                                    listaProduto.add(p);
                                 }
-                                adapter.notifyDataSetChanged();
+//                                adapter.notifyDataSetChanged();
 
 
                             } catch (Exception erro) {
@@ -213,12 +225,12 @@ public class PrincipalActivity extends AppCompatActivity
                                 Toast.makeText(getApplicationContext(), "Ops! Erro, " + erro, Toast.LENGTH_LONG).show();
                             }
 
-                            progressLoad.setVisibility(View.GONE);
+//                            progressLoad.setVisibility(View.GONE);
 
                         }
                     });
         }
-    }
+    }*/
     //----------------------------------------------------------------------------------------------------------------
     //----------------------------------------------------------------------------------------------------------------
 
@@ -274,8 +286,20 @@ public class PrincipalActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_lanchonete) {
 
-            Intent abreCadastroLanch = new Intent(getApplicationContext(), CadLanchActivity.class);
-            startActivity(abreCadastroLanch);
+            /*Intent abreCadastroLanch = new Intent(getApplicationContext(), CadLanchActivity.class);
+            startActivity(abreCadastroLanch);*/
+
+            CadastLanchFragment cadastLanchFragment = new CadastLanchFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, cadastLanchFragment);
+            fragmentTransaction.commit();
+
+        } else if (id == R.id.nav_busca) {
+
+            BuscaFragment buscaFragment = new BuscaFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, buscaFragment);
+            fragmentTransaction.commit();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
