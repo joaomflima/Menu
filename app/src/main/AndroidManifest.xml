@@ -20,8 +20,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.CadastroClienteActivity" />
-        <activity android:name=".activity.BuscaActivity" />
-        <activity android:name=".activity.CadLanchActivity" />
         <activity
             android:name=".activity.PrincipalActivity"
             android:label="@string/title_activity_principal"

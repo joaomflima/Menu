@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.JsonArray;
@@ -41,74 +42,41 @@ public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     // Variaveis
-//    private SearchView searchProduto;
-//    private RecyclerView recyclerProdutos;
-//    private ProgressBar progressLoad;
-//    private List<Produto> listaProduto = new ArrayList<>();
-//    private String HOST = "https://menu-app.000webhostapp.com/webservice";
     private FrameLayout frameContainer;
+    private TextView textNomeUsuario;
+    private TextView textEmailUsuario;
 
-
-    // Configurar Adapter
-//    ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_principal);
 
+
+        // Meus Códigos Inicio ----------------------------------------------------------------------------------------------------------------
+
+        // Seta título para Activity
+        this.setTitle("Menu");
+
+        // Variaveis
+        frameContainer = findViewById(R.id.frameContainer);
+        textNomeUsuario = findViewById(R.id.textNomeUsuario);
+        textEmailUsuario = findViewById(R.id.textEmailUsuario);
+
+
+        // Chama o Fragment de Busca
         BuscaFragment buscaFragment = new BuscaFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.frameContainer, buscaFragment);
         fragmentTransaction.commit();
 
-        //----------------------------------------------------------------------------------------------------------------
-        //----------------------------------------------------------------------------------------------------------------
+        // Recebe id e nome do Usuario
+        int idUsuario = getIntent().getExtras().getInt("id_usuario");
+        String nomeUsuario = getIntent().getExtras().getString("nome_usuario");
 
-        // Variaveis
-//        recyclerProdutos = findViewById(R.id.recyclerView);
-//        searchProduto = findViewById(R.id.searchView5);
-//        progressLoad = findViewById(R.id.progressProdutos);
-        frameContainer = findViewById(R.id.frameContainer);
 
-        // Lista Produtos
-//        this.lerProdutos();
 
-        // Configurar RecyclerView
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-//        recyclerProdutos.setLayoutManager(layoutManager);
-//        recyclerProdutos.setHasFixedSize(true);
-//        recyclerProdutos.addItemDecoration(new DividerItemDecoration(this, LinearLayout.VERTICAL));
-//        recyclerProdutos.setAdapter(adapter);
-
-//        progressLoad.setVisibility(View.VISIBLE);
-
-        // Seta título
-        this.setTitle("Menu");
-
-        // Configura SearchView
-//        searchProduto.setQueryHint("Pesquisar Produtos");
-//        searchProduto.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
-
-//            @Override
-//            public boolean onQueryTextSubmit(String query) {
-//
-//                String produto = "%" + query + "%";
-//                buscaProdutos(produto);
-//
-//                return true;
-//            }
-
-//            @Override
-//            public boolean onQueryTextChange(String newText) {
-//                //System.out.println("newText: "+ newText);
-//                //System.out.println(produto);
-//                return false;
-//            }
-//        });
-
-        //----------------------------------------------------------------------------------------------------------------
-        //----------------------------------------------------------------------------------------------------------------
+        // Meus Códigos FIM ----------------------------------------------------------------------------------------------------------------
 
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -134,106 +102,6 @@ public class PrincipalActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
     }
-    //----------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------
-
-    // Lista Produtos quando a Activity é iniciada
-    /*private void lerProdutos() {
-
-//        fechaTeclado();
-
-        progressLoad.setVisibility(View.VISIBLE);
-        String url = HOST + "/readprodutos/read.php";
-
-        Ion.with(getBaseContext())
-                .load(url)
-                .asJsonArray()
-                .setCallback(new FutureCallback<JsonArray>() {
-                    @Override
-                    public void onCompleted(Exception e, JsonArray result) {
-
-
-                        try {
-
-                            for(int i = 0; i < result.size(); i++) {
-
-                                JsonObject obj = result.get(i).getAsJsonObject();
-
-                                //String nome = obj.get("nome").getAsString();
-                                //Produto p = new Produto(nome);
-
-                                Produto p = new Produto();
-                                p.setId_produto(obj.get("id_produto").getAsString());
-                                p.setNome(obj.get("nome").getAsString());
-                                p.setDescricao(obj.get("descricao").getAsString());
-                                p.setPreco(obj.get("preco").getAsString());
-
-                                listaProduto.add(p);
-                            }
-//                            adapter.notifyDataSetChanged();
-
-
-                        } catch (Exception erro) {
-                            Toast.makeText(getApplicationContext(), "Ops! Erro, " + erro, Toast.LENGTH_LONG).show();
-                        }
-
-//                        progressLoad.setVisibility(View.GONE);
-                    }
-                });
-    }*/
-
-    /*private void buscaProdutos(String produto) {
-
-//        fechaTeclado();
-
-        progressLoad.setVisibility(View.VISIBLE);
-
-        String url = HOST + "/readprodutos/readpesquisa.php";
-        listaProduto.clear();
-
-        if (produto.length() > 0) {
-
-            Ion.with(getBaseContext())
-                    .load(url)
-                    .setBodyParameter("produto", produto)
-                    .asJsonArray()
-                    .setCallback(new FutureCallback<JsonArray>() {
-                        @Override
-                        public void onCompleted(Exception e, JsonArray result) {
-
-                            try {
-
-                                for (int i = 0; i < result.size(); i++) {
-
-                                    JsonObject obj = result.get(i).getAsJsonObject();
-
-                                    //String nome = obj.get("nome").getAsString();
-                                    //Produto p = new Produto(nome);
-
-                                    Produto p = new Produto();
-                                    p.setId_produto(obj.get("id_produto").getAsString());
-                                    p.setNome(obj.get("nome").getAsString());
-                                    p.setDescricao(obj.get("descricao").getAsString());
-                                    p.setPreco(obj.get("preco").getAsString());
-
-//                                    listaProduto.add(p);
-                                }
-//                                adapter.notifyDataSetChanged();
-
-
-                            } catch (Exception erro) {
-
-                                Toast.makeText(getApplicationContext(), "Ops! Erro, " + erro, Toast.LENGTH_LONG).show();
-                            }
-
-//                            progressLoad.setVisibility(View.GONE);
-
-                        }
-                    });
-        }
-    }*/
-    //----------------------------------------------------------------------------------------------------------------
-    //----------------------------------------------------------------------------------------------------------------
 
     @Override
     public void onBackPressed() {

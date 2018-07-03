@@ -33,7 +33,7 @@ public class LanchonetesFragment extends Fragment {
     private RecyclerView recyclerLanchonetes;
     private List<Lanchonete> listaLanchonete = new ArrayList<>();
     private LanchoneteAdapter lanchoneteAdapter;
-    private String HOST = "https://menu-app.000webhostapp.com/api";
+    private String HOST = "https://menu-app.000webhostapp.com/webservice";
     // private String HOST = "http://localhost/webservice";
     private ProgressBar progressBar;
 

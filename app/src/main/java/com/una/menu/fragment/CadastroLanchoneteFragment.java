@@ -34,7 +34,7 @@ public class CadastroLanchoneteFragment extends Fragment {
     ProgressBar progressBar;
 
     // Variaveis para conexão com web service.
-    String HOST = "https://menu-app.000webhostapp.com/api";
+    String HOST = "https://menu-app.000webhostapp.com/webservice";
     // String HOST = "http://localhost/webservice";
 
     public CadastroLanchoneteFragment() {
