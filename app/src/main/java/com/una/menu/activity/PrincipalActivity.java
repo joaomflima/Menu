@@ -31,6 +31,7 @@ import com.una.menu.R;
 import com.una.menu.adapter.ProdutoAdapter;
 import com.una.menu.fragment.BuscaFragment;
 import com.una.menu.fragment.CadastLanchFragment;
+import com.una.menu.fragment.LanchonetesFragment;
 import com.una.menu.model.Produto;
 
 import java.util.ArrayList;
@@ -83,7 +84,7 @@ public class PrincipalActivity extends AppCompatActivity
 //        progressLoad.setVisibility(View.VISIBLE);
 
         // Seta título
-//        this.setTitle("Teste Titulo");
+        this.setTitle("Menu");
 
         // Configura SearchView
 //        searchProduto.setQueryHint("Pesquisar Produtos");
@@ -272,7 +273,7 @@ public class PrincipalActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        /*if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
 
@@ -280,7 +281,9 @@ public class PrincipalActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_manage) {
 
-        } else if (id == R.id.nav_share) {
+        } */
+
+        if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {
 
@@ -289,9 +292,9 @@ public class PrincipalActivity extends AppCompatActivity
             /*Intent abreCadastroLanch = new Intent(getApplicationContext(), CadLanchActivity.class);
             startActivity(abreCadastroLanch);*/
 
-            CadastLanchFragment cadastLanchFragment = new CadastLanchFragment();
+            LanchonetesFragment lanchonetesFragment = new LanchonetesFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frameContainer, cadastLanchFragment);
+            fragmentTransaction.replace(R.id.frameContainer, lanchonetesFragment);
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_busca) {

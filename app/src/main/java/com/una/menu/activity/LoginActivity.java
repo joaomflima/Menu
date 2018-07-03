@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
         textSemLog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent abreSemLogar = new Intent(LoginActivity.this, BuscaActivity.class);
+                Intent abreSemLogar = new Intent(LoginActivity.this, PrincipalActivity.class);
 
                 abreSemLogar.putExtra("nome_usuario", "Visitante");
                 startActivity(abreSemLogar);
@@ -126,9 +126,9 @@ public class LoginActivity extends AppCompatActivity {
                                                 System.out.println(sexo);
                                                 System.out.println(email);
 
-                                                Intent abreInicio = new Intent(LoginActivity.this, BuscaActivity.class);
-                                                abreInicio.putExtra("id_usuario", id);
-                                                abreInicio.putExtra("nome_usuario", nome);
+                                                Intent abreInicio = new Intent(LoginActivity.this, PrincipalActivity.class);
+//                                                abreInicio.putExtra("id_usuario", id);
+//                                                abreInicio.putExtra("nome_usuario", nome);
                                                 startActivity(abreInicio);
 
                                                 // Desativa o ProgressBar

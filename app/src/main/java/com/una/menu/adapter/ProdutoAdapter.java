@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
 import com.una.menu.R;
 import com.una.menu.model.Produto;
 
@@ -49,6 +50,15 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         holder.descricao.setText(produto.getDescricao());
         holder.preco.setText(produto.getPreco());
         holder.avaliacao.setText(produto.getAvaliacao());
+
+
+//Carregar imagem por URL
+        Picasso.get()
+                .load(produto.getImagem())
+                .resize(100, 80)
+                .into(holder.imageView);
+
+
 
         System.out.println(produto.getNome());
 //        holder.nome.setText("TesteNome"); // Apagar

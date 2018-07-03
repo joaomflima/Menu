@@ -25,6 +25,8 @@ import com.una.menu.adapter.ProdutoAdapter;
 import com.una.menu.model.Produto;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -111,6 +113,8 @@ public class BuscaFragment extends Fragment {
 
         String url = HOST + "/readprodutos/read.php";
 
+        listaProduto.clear();
+
         Ion.with(context)
                 .load(url)
                 .asJsonArray()
@@ -133,9 +137,20 @@ public class BuscaFragment extends Fragment {
                                 p.setNome(obj.get("nome").getAsString());
                                 p.setDescricao(obj.get("descricao").getAsString());
                                 p.setPreco(obj.get("preco").getAsString());
+                                p.setImagem();
 
                                 listaProduto.add(p);
                             }
+
+                            listaProduto.sort(new Comparator<Produto>() {
+                                @Override
+                                public int compare(Produto o1, Produto o2) {
+                                    //return o1.getPreco().compareTo(o2.getPreco());
+                                    return -o1.getPreco().compareTo( o2.getPreco());
+
+                                }
+                            });
+
                             adapter.notifyDataSetChanged();
 
 
@@ -154,7 +169,7 @@ public class BuscaFragment extends Fragment {
         iconeLoad.setVisibility(View.VISIBLE);
 
         String url = HOST + "/readprodutos/readpesquisa.php";
-        listaProduto.clear();
+//        listaProduto.clear();
 
         if (produto.length() > 0) {
 
@@ -168,7 +183,9 @@ public class BuscaFragment extends Fragment {
 
                             try {
 
+                                listaProduto.clear();
                                 for (int i = 0; i < result.size(); i++) {
+
 
                                     JsonObject obj = result.get(i).getAsJsonObject();
 
@@ -180,9 +197,21 @@ public class BuscaFragment extends Fragment {
                                     p.setNome(obj.get("nome").getAsString());
                                     p.setDescricao(obj.get("descricao").getAsString());
                                     p.setPreco(obj.get("preco").getAsString());
+                                    p.setImagem();
 
                                     listaProduto.add(p);
+
+//                                    System.out.println(p.getNome());
                                 }
+
+                                listaProduto.sort(new Comparator<Produto>() {
+                                    @Override
+                                    public int compare(Produto o1, Produto o2) {
+                                        return o1.getPreco().compareTo(o2.getPreco());
+
+                                    }
+                                });
+
                                 adapter.notifyDataSetChanged();
 
 
@@ -192,6 +221,12 @@ public class BuscaFragment extends Fragment {
                             }
 
                             iconeLoad.setVisibility(View.GONE);
+
+                            System.out.println("---------INICIO----------\n");
+                            for (int i = 0; i < listaProduto.size(); i++) {
+                                listaProduto.get(i).getNome();
+                            }
+                            System.out.println("---------FIM----------\n");
 
                         }
                     });

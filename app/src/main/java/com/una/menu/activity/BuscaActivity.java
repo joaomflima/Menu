@@ -109,7 +109,7 @@ public class BuscaActivity extends AppCompatActivity {
         progressPesquisa.setVisibility(View.VISIBLE);
 
         String url = HOST + "/readprodutos/readpesquisa.php";
-        listaProduto.clear();
+//        listaProduto.clear();
 
         if (produto.length() > 0) {
 
@@ -136,6 +136,7 @@ public class BuscaActivity extends AppCompatActivity {
                                     p.setDescricao(obj.get("descricao").getAsString());
                                     p.setPreco(obj.get("preco").getAsString());
 
+                                    listaProduto.clear();
                                     listaProduto.add(p);
                                 }
                                 produtoAdapter.notifyDataSetChanged();

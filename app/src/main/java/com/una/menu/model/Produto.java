@@ -1,6 +1,8 @@
 package com.una.menu.model;
 
-public class Produto {
+import android.support.annotation.NonNull;
+
+public class Produto implements Comparable<Produto> {
 
     // Atributos
     private String id_produto;
@@ -80,7 +82,23 @@ public class Produto {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
-        this.imagem = imagem;
+    public void setImagem() {
+
+        if(this.nome.contains("coxinha") || this.nome.contains("Coxinha")){
+            this.imagem = "http://kitmix.com.br/wp-content/uploads/2016/03/COXINHA-2.png";
+        }
+
+        if(this.nome.contains("pão de queijo") || this.nome.contains("Pão de queijo")){
+            this.imagem = "http://www.matulapaodequeijaria.com.br/wp-content/uploads/2017/10/comum-ok.png";
+        }
+
+        if(this.nome.contains("suco") || this.nome.contains("Suco")){
+            this.imagem = "http://ruvolo.com.br/wp-content/uploads/2015/04/80703-1.jpg";
+        }
+    }
+
+    @Override
+    public int compareTo(@NonNull Produto o) {
+        return 0;
     }
 }
