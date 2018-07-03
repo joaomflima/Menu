@@ -2,8 +2,10 @@ package com.una.menu.fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.SearchView;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -21,6 +25,7 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
+import com.una.menu.RecyclerItemClickListener;
 import com.una.menu.adapter.ProdutoAdapter;
 import com.una.menu.model.Produto;
 
@@ -37,6 +42,7 @@ public class BuscaFragment extends Fragment {
     private Context context;
 
     // Variaveis
+    private FrameLayout frameContainer;
     private SearchView searchProdutos;
     private RecyclerView recyclerProdutos;
     private List<Produto> listaProduto = new ArrayList<>();
@@ -58,27 +64,16 @@ public class BuscaFragment extends Fragment {
 
         // -------------------------- INICIO DO CÓDIGO ------------------------
 
+        frameContainer = view.findViewById(R.id.frameContainer);
         searchProdutos = view.findViewById(R.id.buscaProdutos);
         recyclerProdutos = view.findViewById(R.id.recyclerViewProdutos);
         iconeLoad = view.findViewById(R.id.progressBar2);
 
         iconeLoad.setVisibility(View.VISIBLE);
 
-
-        // Configura SearchView
-        searchProdutos.setQueryHint("Pesquisa Produtos");
-
         // Lista Produtos
         this.buscaAutomaticaProdutos();
-
-
-        // Configurar RecyclerView
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerProdutos.setLayoutManager(layoutManager);
-        recyclerProdutos.setHasFixedSize(true);
-        recyclerProdutos.addItemDecoration(new DividerItemDecoration(context,LinearLayout.VERTICAL));
-        recyclerProdutos.setAdapter(adapter);
-
+//        this.setaProdutoManual();
 
         // Configura SearchView
         searchProdutos.setQueryHint("Pesquisar Produtos");
@@ -100,6 +95,43 @@ public class BuscaFragment extends Fragment {
                 return false;
             }
         });
+
+        // Configurar RecyclerView
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+        recyclerProdutos.setLayoutManager(layoutManager);
+        recyclerProdutos.setHasFixedSize(true);
+        recyclerProdutos.addItemDecoration(new DividerItemDecoration(context,LinearLayout.VERTICAL));
+        recyclerProdutos.setAdapter(adapter);
+
+        recyclerProdutos.addOnItemTouchListener(
+                new RecyclerItemClickListener(
+                        context,
+                        recyclerProdutos,
+                        new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(View view, int position) {
+                                Produto produto = listaProduto.get(position);
+                                Toast.makeText(context, "Produto selecionado: " + produto.getNome(),
+                                        Toast.LENGTH_SHORT).show();
+                                ProdutoFragment produtoFragment = new ProdutoFragment();
+                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                fragmentTransaction.replace(R.id.frameContainer, produtoFragment);
+                                fragmentTransaction.commit();
+                            }
+
+                            @Override
+                            public void onLongItemClick(View view, int position) {
+                                Toast.makeText(context,"Clique longo", Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                            }
+                        }
+                )
+        );
 
         // -------------------------- FIM DO CÓDIGO ------------------------
         return  view;
@@ -239,6 +271,21 @@ public class BuscaFragment extends Fragment {
         this.context = context;
         super.onAttach(context);
     }
+
+
+    public void setaProdutoManual() {
+        Produto p = new Produto();
+        p.setId_produto("0");
+        p.setNome("Suco");
+        p.setDescricao("Suco Natural");
+        p.setPreco("R$ 1,50");
+        p.setImagem();
+
+        listaProduto.add(p);
+
+        iconeLoad.setVisibility(View.GONE);
+    }
+
 
    /* private void fechaTeclado() {
         View view = this.getCurrentFocus();

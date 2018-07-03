@@ -1,6 +1,10 @@
 package com.una.menu.model;
 
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
+
+import com.una.menu.R;
+import com.una.menu.fragment.ProdutoFragment;
 
 public class Produto implements Comparable<Produto> {
 
@@ -101,4 +105,6 @@ public class Produto implements Comparable<Produto> {
     public int compareTo(@NonNull Produto o) {
         return 0;
     }
+
+
 }
