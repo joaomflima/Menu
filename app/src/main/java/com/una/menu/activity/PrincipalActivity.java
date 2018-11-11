@@ -1,15 +1,9 @@
 package com.una.menu.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -19,25 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
-import com.koushikdutta.async.future.FutureCallback;
-import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
-import com.una.menu.adapter.ProdutoAdapter;
 import com.una.menu.fragment.BuscaFragment;
-import com.una.menu.fragment.CadastLanchFragment;
 import com.una.menu.fragment.LanchonetesFragment;
-import com.una.menu.fragment.ProdutoFragment;
-import com.una.menu.model.Produto;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.una.menu.fragment.ProdutosFragment;
+import com.una.menu.fragment.ProdutosViewFragment;
 
 public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -61,8 +43,8 @@ public class PrincipalActivity extends AppCompatActivity
 
         // Variaveis
         frameContainer = findViewById(R.id.frameContainer);
-        textNomeUsuario = findViewById(R.id.textNomeUsuario);
-        textEmailUsuario = findViewById(R.id.textEmailUsuario);
+        //textNomeUsuario = findViewById(R.id.textNomeUsuario);
+        //textEmailUsuario = findViewById(R.id.textEmailUsuario);
 
 
         // Chama o Fragment de Busca
@@ -164,6 +146,16 @@ public class PrincipalActivity extends AppCompatActivity
             LanchonetesFragment lanchonetesFragment = new LanchonetesFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameContainer, lanchonetesFragment);
+            fragmentTransaction.commit();
+
+        } else if (id == R.id.nav_produto) {
+
+            /*Intent abreCadastroLanch = new Intent(getApplicationContext(), CadLanchActivity.class);
+            startActivity(abreCadastroLanch);*/
+
+            ProdutosViewFragment produtosViewFragment = new ProdutosViewFragment();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.frameContainer, produtosViewFragment);
             fragmentTransaction.commit();
 
         } else if (id == R.id.nav_busca) {

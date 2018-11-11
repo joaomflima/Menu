@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.support.v7.widget.SearchView;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -37,35 +38,34 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BuscaFragment extends Fragment {
+public class ProdutosViewFragment extends Fragment {
 
     private Context context;
 
     // Variaveis
     private FrameLayout frameContainer;
-    private SearchView searchProdutos;
     private RecyclerView recyclerProdutos;
     private List<Produto> listaProduto = new ArrayList<>();
     private ProgressBar iconeLoad;
+    private Button btnCadastrar;
     private String HOST = "https://menu-app.000webhostapp.com/webservice";
 
     // Configurar Adapter
     ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
 
 
-    public BuscaFragment() {
+    public ProdutosViewFragment() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_busca, container, false);
+        View view = inflater.inflate(R.layout.fragment_produtos, container, false);
 
-        // -------------------------- INICIO DO CÓDIGO ------------------------
+        btnCadastrar = view.findViewById(R.id.btnCadastrar);
 
         frameContainer = view.findViewById(R.id.frameContainer);
-        searchProdutos = view.findViewById(R.id.buscaProdutos);
         recyclerProdutos = view.findViewById(R.id.recyclerViewProdutos);
         iconeLoad = view.findViewById(R.id.progressBar2);
 
@@ -73,28 +73,6 @@ public class BuscaFragment extends Fragment {
 
         // Lista Produtos
         this.buscaAutomaticaProdutos();
-//        this.setaProdutoManual();
-
-        // Configura SearchView
-        searchProdutos.setQueryHint("Pesquisar Produtos");
-        searchProdutos.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                String produto = "%" + query + "%";
-                pesquisaProdutos(produto);
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //System.out.println("newText: "+ newText);
-                //System.out.println(produto);
-                return false;
-            }
-        });
 
         // Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
@@ -123,8 +101,6 @@ public class BuscaFragment extends Fragment {
                                 bundle.putString("avaliacao", produto.getAvaliacao());
                                 bundle.putString("imagem", produto.getImagem());
                                 bundle.putString("preco", produto.getPreco());
-                                bundle.putString("nome_lanchonete",produto.getNomeLanchonete());
-                                bundle.putString("end_lanchonete",produto.getEndLanchonete());
 
                                 ProdutoFragment produtoFragment = new ProdutoFragment();
                                 produtoFragment.setArguments(bundle);
@@ -148,7 +124,19 @@ public class BuscaFragment extends Fragment {
                 )
         );
 
-        // -------------------------- FIM DO CÓDIGO ------------------------
+        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CadastroProdutoFragment cadastroProdutoFragment = new CadastroProdutoFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.frameContainer, cadastroProdutoFragment,"findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+
+            }
+        });
+
         return  view;
 
     }
@@ -186,7 +174,6 @@ public class BuscaFragment extends Fragment {
                                 p.setPreco(obj.get("preco").getAsString());
                                 p.setImagem();
                                 p.setNomeLanchonete(obj.get("nome_lanchonete").getAsString());
-                                p.setEndLanchonete(obj.get("end_lanchonete").getAsString());
 
                                 listaProduto.add(p);
                             }
@@ -212,78 +199,6 @@ public class BuscaFragment extends Fragment {
                 });
     }
 
-    private void pesquisaProdutos(String produto) {
-
-//        fechaTeclado();
-        iconeLoad.setVisibility(View.VISIBLE);
-
-        String url = HOST + "/readprodutos/readpesquisa_2.php";
-//        listaProduto.clear();
-
-        if (produto.length() > 0) {
-
-            Ion.with(context)
-                    .load(url)
-                    .setBodyParameter("produto", produto)
-                    .asJsonArray()
-                    .setCallback(new FutureCallback<JsonArray>() {
-                        @Override
-                        public void onCompleted(Exception e, JsonArray result) {
-
-                            try {
-
-                                listaProduto.clear();
-                                for (int i = 0; i < result.size(); i++) {
-
-
-                                    JsonObject obj = result.get(i).getAsJsonObject();
-
-                                    //String nome = obj.get("nome").getAsString();
-                                    //Produto p = new Produto(nome);
-
-                                    Produto p = new Produto();
-                                    p.setId_produto(obj.get("id_produto").getAsString());
-                                    p.setNome(obj.get("nome").getAsString());
-                                    p.setDescricao(obj.get("descricao").getAsString());
-                                    p.setPreco(obj.get("preco").getAsString());
-                                    p.setImagem();
-                                    p.setNomeLanchonete(obj.get("nome_lanchonete").getAsString());
-                                    p.setEndLanchonete(obj.get("end_lanchonete").getAsString());
-
-                                    listaProduto.add(p);
-
-//                                    System.out.println(p.getNome());
-                                }
-
-                                listaProduto.sort(new Comparator<Produto>() {
-                                    @Override
-                                    public int compare(Produto o1, Produto o2) {
-                                        return o1.getPreco().compareTo(o2.getPreco());
-
-                                    }
-                                });
-
-                                adapter.notifyDataSetChanged();
-
-
-                            } catch (Exception erro) {
-
-                                Toast.makeText(context, "Ops! Erro, " + erro, Toast.LENGTH_LONG).show();
-                            }
-
-                            iconeLoad.setVisibility(View.GONE);
-
-                            System.out.println("---------INICIO----------\n");
-                            for (int i = 0; i < listaProduto.size(); i++) {
-                                listaProduto.get(i).getNome();
-                            }
-                            System.out.println("---------FIM----------\n");
-
-                        }
-                    });
-        }
-    }
-
     //Declara um atributo para guardar o context.
     @Override
     public void onAttach(Context context) {
@@ -304,7 +219,6 @@ public class BuscaFragment extends Fragment {
 
         iconeLoad.setVisibility(View.GONE);
     }
-
 
    /* private void fechaTeclado() {
         View view = this.getCurrentFocus();

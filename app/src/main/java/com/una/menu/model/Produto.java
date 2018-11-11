@@ -15,6 +15,10 @@ public class Produto implements Comparable<Produto> {
     private String preco;
     private String avaliacao;
     private String imagem;
+    private String nomeLanchonete;
+    private String endLanchonete;
+
+
 
     // Construtor 01
     public Produto(String nome, String descricao, String preco) {
@@ -71,7 +75,7 @@ public class Produto implements Comparable<Produto> {
     }
 
     public void setPreco(String preco) {
-        this.preco = preco;
+        this.preco = "R$ "+preco;
     }
 
     public String getAvaliacao() {
@@ -99,6 +103,30 @@ public class Produto implements Comparable<Produto> {
         if(this.nome.contains("suco") || this.nome.contains("Suco")){
             this.imagem = "http://ruvolo.com.br/wp-content/uploads/2015/04/80703-1.jpg";
         }
+
+        if(this.nome.contains("Pastel") || this.nome.contains("pastel")) {
+            this.imagem = "https://static.wixstatic.com/media/f88c19_01d9b393516442e1907c49e5a7f2bfdf.gif";
+        }
+
+        if(this.nome.contains("Kibe") || this.nome.contains("kibe")) {
+            this.imagem = "https://www.habibs.com.br/storage/products/images/5_interna.png";
+        }
+    }
+
+    public String getNomeLanchonete() {
+        return nomeLanchonete;
+    }
+
+    public void setNomeLanchonete(String nomeLanchonete) {
+        this.nomeLanchonete = "Lanchonete: " + nomeLanchonete;
+    }
+
+    public String getEndLanchonete() {
+        return endLanchonete;
+    }
+
+    public void setEndLanchonete(String endLanchonete) {
+        this.endLanchonete = endLanchonete;
     }
 
     @Override

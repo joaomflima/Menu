@@ -1,7 +1,6 @@
 package com.una.menu.fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,36 +16,42 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
-import com.una.menu.activity.LoginActivity;
+import com.una.menu.model.Lanchonete;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CadastroLanchoneteFragment extends Fragment {
+public class ViewLanchoneteFragment extends Fragment {
 
     // Variaveis que vão receber os objetos da tela.
     EditText editNomeCad, editTelefoneCad, editCelularCad;
     EditText editEnderecoCad, editCepCad, editCidadeCad, editEstadoCad;
     CheckBox editCartaoCredito, editCartaoDebito, editDinheiro;
-    Button btnCadastrar;
+    Button btnEditar, btnExcluir;
     ProgressBar progressBar;
 
     // Variaveis para conexão com web service.
     String HOST = "https://menu-app.000webhostapp.com/webservice";
     // String HOST = "http://localhost/webservice";
 
-    public CadastroLanchoneteFragment() {
+    public ViewLanchoneteFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_lanchonete_cadastro, container, false);
+        View view = inflater.inflate(R.layout.fragment_lanchonete_view, container, false);
+
+        Bundle bundle = getArguments();
+        Lanchonete lanchonete = new Lanchonete();
+
+        if(bundle != null) {
+            lanchonete = (Lanchonete) bundle.getSerializable("LANCHONETE");
+        }
 
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
@@ -60,13 +65,28 @@ public class CadastroLanchoneteFragment extends Fragment {
         editCartaoDebito    = view.findViewById(R.id.cbCartaoDebito);
         editDinheiro        = view.findViewById(R.id.cbDinheiro);
 
-        btnCadastrar    = view.findViewById(R.id.btnCadastrarLanchonete);
-        progressBar     = view.findViewById(R.id.progressBar);
+        btnEditar    = view.findViewById(R.id.btnEditarLanchonete);
+        btnExcluir   = view.findViewById(R.id.btnExcluirLanchonete);
+        progressBar  = view.findViewById(R.id.progressBar);
 
         // Desativa o ProgressBar
         progressBar.setVisibility(View.GONE);
 
-        btnCadastrar.setOnClickListener(new View.OnClickListener() {
+        // Preenche os campos da tela
+        editNomeCad.setText(lanchonete.getNome());
+        editTelefoneCad.setText(lanchonete.getTelefone());
+        editCelularCad.setText(lanchonete.getCelular());
+        editEnderecoCad.setText(lanchonete.getEndereco());
+        editCepCad.setText(lanchonete.getCep());
+        editCidadeCad.setText(lanchonete.getCidade());
+        editEstadoCad.setText(lanchonete.getEstado());
+        editCartaoCredito.setChecked(true);
+        editCartaoDebito.setChecked(true);
+        editDinheiro.setChecked(true);
+
+        final String id_lanchonete = lanchonete.getId_lanchonete();
+
+        btnEditar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
 
@@ -80,7 +100,7 @@ public class CadastroLanchoneteFragment extends Fragment {
                 String id_pagamento = verificarPagamento();
                 String id_cliente = "1";
 
-                String URL = HOST + "/lanchonete/create.php";
+                String URL = HOST + "/lanchonete/update.php";
 
                 if (nome.isEmpty() || telefone.isEmpty() || celular.isEmpty() || endereco.isEmpty()
                         || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty() || id_pagamento == "0") {
@@ -107,6 +127,7 @@ public class CadastroLanchoneteFragment extends Fragment {
 
                     Ion.with(v.getContext())
                             .load(URL)
+                            .setBodyParameter("id_lanchonete", id_lanchonete)
                             .setBodyParameter("nome", nome)
                             .setBodyParameter("telefone", telefone)
                             .setBodyParameter("celular", celular)
@@ -121,13 +142,11 @@ public class CadastroLanchoneteFragment extends Fragment {
                                 @Override
                                 public void onCompleted(Exception e, JsonObject result) {
 
-                                    String RETORNO = result.get("CADASTRO").getAsString();
+                                    String RETORNO = result.get("ATUALIZACAO").getAsString();
 
                                     try {
-                                        if(RETORNO.equals("EMAIL_ERRO")){
-                                            Toast.makeText(v.getContext(), "Esta lanchonete já está cadastrada!", Toast.LENGTH_LONG).show();
-                                        } else if (RETORNO.equals("SUCESSO")){
-                                            Toast.makeText(v.getContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
+                                        if (RETORNO.equals("SUCESSO")){
+                                            Toast.makeText(v.getContext(), "Atualização realizada com sucesso!", Toast.LENGTH_LONG).show();
                                         } else {
                                             Toast.makeText(v.getContext(), "ERRO DESCONHECIDO", Toast.LENGTH_LONG).show();
                                         }
@@ -138,8 +157,6 @@ public class CadastroLanchoneteFragment extends Fragment {
 
                                     // Desativa o ProgressBar
                                     progressBar.setVisibility(View.GONE);
-
-
 
                                     // Habilita o cursor
                                     editNomeCad.setCursorVisible(true);
@@ -160,6 +177,51 @@ public class CadastroLanchoneteFragment extends Fragment {
                 LanchonetesFragment lanchonetesFragment= new LanchonetesFragment();
                 getFragmentManager().beginTransaction()
                         .replace(R.id.frameContainer, lanchonetesFragment,"findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+
+            }
+        });
+
+        btnExcluir.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+
+                String URL = HOST + "/lanchonete/delete.php";
+
+                fechaTeclado(v);
+
+                Ion.with(v.getContext())
+                        .load(URL)
+                        .setBodyParameter("id_lanchonete", id_lanchonete)
+                        .asJsonObject()
+                        .setCallback(new FutureCallback<JsonObject>() {
+                            @Override
+                            public void onCompleted(Exception e, JsonObject result) {
+
+                                String RETORNO = result.get("EXCLUSAO").getAsString();
+
+                                try {
+                                    if (RETORNO.equals("SUCESSO")) {
+                                        Toast.makeText(v.getContext(), "Exclusão realizada com sucesso!", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(v.getContext(), "ERRO DESCONHECIDO", Toast.LENGTH_LONG).show();
+                                    }
+
+                                } catch (Exception erro) {
+                                    Toast.makeText(v.getContext(), "Ops! Falha na conexão, " + erro, Toast.LENGTH_LONG).show();
+                                }
+
+                                // Desativa o ProgressBar
+                                progressBar.setVisibility(View.GONE);
+
+                            }
+                        });
+
+
+                LanchonetesFragment lanchonetesFragment = new LanchonetesFragment();
+                getFragmentManager().beginTransaction()
+                        .replace(R.id.frameContainer, lanchonetesFragment, "findThisFragment")
                         .addToBackStack(null)
                         .commit();
 

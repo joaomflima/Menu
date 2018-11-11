@@ -2,18 +2,16 @@ package com.una.menu.fragment;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.SearchView;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -30,20 +28,18 @@ import com.una.menu.adapter.ProdutoAdapter;
 import com.una.menu.model.Produto;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class BuscaFragment extends Fragment {
+public class ProdutosFragment extends Fragment {
 
     private Context context;
 
     // Variaveis
     private FrameLayout frameContainer;
-    private SearchView searchProdutos;
     private RecyclerView recyclerProdutos;
     private List<Produto> listaProduto = new ArrayList<>();
     private ProgressBar iconeLoad;
@@ -53,19 +49,18 @@ public class BuscaFragment extends Fragment {
     ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
 
 
-    public BuscaFragment() {
+    public ProdutosFragment() {
         // Required empty public constructor
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_busca, container, false);
+        View view = inflater.inflate(R.layout.fragment_produtos, container, false);
 
         // -------------------------- INICIO DO CÓDIGO ------------------------
 
         frameContainer = view.findViewById(R.id.frameContainer);
-        searchProdutos = view.findViewById(R.id.buscaProdutos);
         recyclerProdutos = view.findViewById(R.id.recyclerViewProdutos);
         iconeLoad = view.findViewById(R.id.progressBar2);
 
@@ -73,28 +68,6 @@ public class BuscaFragment extends Fragment {
 
         // Lista Produtos
         this.buscaAutomaticaProdutos();
-//        this.setaProdutoManual();
-
-        // Configura SearchView
-        searchProdutos.setQueryHint("Pesquisar Produtos");
-        searchProdutos.setOnQueryTextListener(new android.support.v7.widget.SearchView.OnQueryTextListener() {
-
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                String produto = "%" + query + "%";
-                pesquisaProdutos(produto);
-
-                return true;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                //System.out.println("newText: "+ newText);
-                //System.out.println(produto);
-                return false;
-            }
-        });
 
         // Configurar RecyclerView
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
@@ -123,8 +96,6 @@ public class BuscaFragment extends Fragment {
                                 bundle.putString("avaliacao", produto.getAvaliacao());
                                 bundle.putString("imagem", produto.getImagem());
                                 bundle.putString("preco", produto.getPreco());
-                                bundle.putString("nome_lanchonete",produto.getNomeLanchonete());
-                                bundle.putString("end_lanchonete",produto.getEndLanchonete());
 
                                 ProdutoFragment produtoFragment = new ProdutoFragment();
                                 produtoFragment.setArguments(bundle);
@@ -186,7 +157,6 @@ public class BuscaFragment extends Fragment {
                                 p.setPreco(obj.get("preco").getAsString());
                                 p.setImagem();
                                 p.setNomeLanchonete(obj.get("nome_lanchonete").getAsString());
-                                p.setEndLanchonete(obj.get("end_lanchonete").getAsString());
 
                                 listaProduto.add(p);
                             }
@@ -248,7 +218,6 @@ public class BuscaFragment extends Fragment {
                                     p.setPreco(obj.get("preco").getAsString());
                                     p.setImagem();
                                     p.setNomeLanchonete(obj.get("nome_lanchonete").getAsString());
-                                    p.setEndLanchonete(obj.get("end_lanchonete").getAsString());
 
                                     listaProduto.add(p);
 

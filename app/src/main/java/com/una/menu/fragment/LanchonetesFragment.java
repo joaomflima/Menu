@@ -1,16 +1,21 @@
 package com.una.menu.fragment;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -57,7 +62,6 @@ public class LanchonetesFragment extends Fragment {
         //Configurar adapter
         lanchoneteAdapter = new LanchoneteAdapter(getContext(), listaLanchonete);
 
-        // textView_nome = findViewById(R.id.textView_nome);
         recyclerLanchonetes = view.findViewById(R.id.recyclerLanchonetes);
         // btnCadastrarLanchonete = findViewById(R.id.btnEditarLanchonete);
         progressBar = view.findViewById(R.id.progressBar);

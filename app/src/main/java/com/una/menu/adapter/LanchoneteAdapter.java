@@ -1,17 +1,22 @@
 package com.una.menu.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.una.menu.R;
 import com.una.menu.fragment.CadastroLanchoneteFragment;
+import com.una.menu.fragment.LanchonetesFragment;
+import com.una.menu.fragment.ViewLanchoneteFragment;
 import com.una.menu.model.Lanchonete;
 
 import java.util.List;
@@ -98,25 +103,14 @@ public class LanchoneteAdapter extends RecyclerView.Adapter<LanchoneteAdapter.My
 
                         Lanchonete lanchonete = listaLanchonetes.get(getLayoutPosition());
 
-                        // Intent it = new Intent(context, CadastroLanchoneteFragment.class);
-                        // it.putExtra("LANCHONETE", lanchonete);
-
-                        // ((AppCompatActivity) context).startActivityForResult(it, 0);
-
-                        // CadastroLanchoneteFragment cadastroLanchoneteFragment= new CadastroLanchoneteFragment();
-
-                        /*LanchonetesFragment lanchonetesFragment = new LanchonetesFragment();
-                        lanchonetesFragment.getFragmentManager().beginTransaction()
-                                .replace(R.id.frameContainer, cadastroLanchoneteFragment,"findThisFragment")
-                                .addToBackStack(null)
-                                .commit();*/
                         Bundle bundle = new Bundle();
-                        //bundle.put
+                        bundle.putSerializable("LANCHONETE", lanchonete);
 
                         AppCompatActivity activity = (AppCompatActivity) v.getContext();
-                        CadastroLanchoneteFragment cadastroLanchoneteFragment= new CadastroLanchoneteFragment();
+                        ViewLanchoneteFragment viewLanchoneteFragment= new ViewLanchoneteFragment();
+                        viewLanchoneteFragment.setArguments(bundle);
                         activity.getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.frameContainer, cadastroLanchoneteFragment)
+                                .replace(R.id.frameContainer, viewLanchoneteFragment)
                                 .addToBackStack(null)
                                 .commit();
 

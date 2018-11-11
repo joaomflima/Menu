@@ -185,8 +185,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
-            // Desativa o ProgressBar
-            //progressLogin.setVisibility(View.GONE);
+    // Desativa o ProgressBar
+    //progressLogin.setVisibility(View.GONE);
 
 
                 /*String[] dados = resultado.split(",");

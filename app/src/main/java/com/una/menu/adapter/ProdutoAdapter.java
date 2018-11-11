@@ -30,7 +30,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View itemLista = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.lista_produtos, parent, false);
+                .inflate(R.layout.produtos_lista, parent, false);
 
         return new MyViewHolder(itemLista);
     }
@@ -49,7 +49,7 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         holder.nome.setText(produto.getNome());
         holder.descricao.setText(produto.getDescricao());
         holder.preco.setText(produto.getPreco());
-        holder.avaliacao.setText(produto.getAvaliacao());
+        holder.nomeLanchonete.setText(produto.getNomeLanchonete());
 
 
 //Carregar imagem por URL
@@ -77,8 +77,10 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
         TextView nome;
         TextView descricao;
         TextView preco;
-        TextView avaliacao;
+        //TextView avaliacao;
         ImageView imageView;
+        TextView nomeLanchonete;
+
 
         public MyViewHolder(View itemView) {
             super(itemView);
@@ -88,12 +90,13 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
             descricao = itemView.findViewById(R.id.textGenero);
             preco = itemView.findViewById(R.id.textAno);*/
 
-           // Versão Leo
+            // Versão Leo
             nome = itemView.findViewById(R.id.textTitulo);
             descricao = itemView.findViewById(R.id.textDescricao);
             preco = itemView.findViewById(R.id.textPreco);
-            avaliacao = itemView.findViewById(R.id.textAvaliacao);
+            //avaliacao = itemView.findViewById(R.id.textAvaliacao);
             imageView = itemView.findViewById(R.id.imageProduto);
+            nomeLanchonete = itemView.findViewById(R.id.textAvaliacao);
         }
     }
 
