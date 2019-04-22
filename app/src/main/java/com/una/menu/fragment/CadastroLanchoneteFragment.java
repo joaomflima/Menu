@@ -1,7 +1,6 @@
 package com.una.menu.fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -17,7 +16,7 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
-import com.una.menu.activity.LoginActivity;
+import com.una.menu.util.MaskEditUtil;
 
 
 /**
@@ -50,10 +49,13 @@ public class CadastroLanchoneteFragment extends Fragment {
 
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
-        editTelefoneCad     = view.findViewById(R.id.editDescricaoCad);
+        editTelefoneCad     = view.findViewById(R.id.editTelefoneCad);
+        editTelefoneCad.addTextChangedListener(MaskEditUtil.mask(editTelefoneCad, MaskEditUtil.FORMAT_FONE));
         editCelularCad      = view.findViewById(R.id.editCelularCad);
+        editCelularCad.addTextChangedListener(MaskEditUtil.mask(editCelularCad, MaskEditUtil.FORMAT_FONE));
         editEnderecoCad     = view.findViewById(R.id.editLanchoneteCad);
-        editCepCad          = view.findViewById(R.id.editCategoriaCad);
+        editCepCad          = view.findViewById(R.id.editCepCad);
+        editCepCad.addTextChangedListener(MaskEditUtil.mask(editCepCad, MaskEditUtil.FORMAT_CEP));
         editCidadeCad       = view.findViewById(R.id.editCidadeCad);
         editEstadoCad       = view.findViewById(R.id.editEstadoCad);
         editCartaoCredito   = view.findViewById(R.id.cbCartaoCredito);

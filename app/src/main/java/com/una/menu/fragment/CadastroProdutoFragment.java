@@ -1,7 +1,6 @@
 package com.una.menu.fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -10,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -20,7 +18,6 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
-import com.una.menu.activity.LoginActivity;
 
 
 /**
@@ -57,9 +54,9 @@ public class CadastroProdutoFragment extends Fragment {
 
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
-        editDescricaoCad     = view.findViewById(R.id.editDescricaoCad);
+        editDescricaoCad     = view.findViewById(R.id.editTelefoneCad);
         editPrecoCad      = view.findViewById(R.id.editPrecoCad);
-        editCategoriaCad     = view.findViewById(R.id.editCategoriaCad);
+        editCategoriaCad     = view.findViewById(R.id.editCepCad);
         editLanchoneteCad          = view.findViewById(R.id.editLanchoneteCad);
 
         btnCadastrar    = view.findViewById(R.id.btnCadastrarProduto);
@@ -67,7 +64,7 @@ public class CadastroProdutoFragment extends Fragment {
 
 
         ArrayAdapter<String> adapterCategoria = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_spinner_item, categorias);
-        Spinner spinner = (Spinner) view.findViewById(R.id.editCategoriaCad);
+        Spinner spinner = (Spinner) view.findViewById(R.id.editCepCad);
         adapterCategoria.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapterCategoria);
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -47,7 +47,7 @@
         android:inputType="textPhonetic"/>
 
     <EditText
-        android:id="@+id/editDescricaoCad"
+        android:id="@+id/editTelefoneCad"
         android:layout_width="174dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -65,7 +65,7 @@
         android:id="@+id/editLanchoneteCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editDescricaoCad"
+        android:layout_below="@+id/editTelefoneCad"
         android:layout_alignParentLeft="true"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
@@ -77,7 +77,7 @@
         android:inputType="textPersonName" />
 
     <EditText
-        android:id="@+id/editCategoriaCad"
+        android:id="@+id/editCepCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/editCidadeCad"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/editCategoriaCad"
+        android:layout_below="@+id/editCepCad"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="8dp"
         android:layout_marginRight="16dp"
@@ -113,7 +113,7 @@
         android:layout_width="177dp"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editCategoriaCad"
+        android:layout_below="@+id/editCepCad"
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"

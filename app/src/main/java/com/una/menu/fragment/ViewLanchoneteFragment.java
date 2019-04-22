@@ -55,10 +55,10 @@ public class ViewLanchoneteFragment extends Fragment {
 
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
-        editTelefoneCad     = view.findViewById(R.id.editDescricaoCad);
+        editTelefoneCad     = view.findViewById(R.id.editTelefoneCad);
         editCelularCad      = view.findViewById(R.id.editCelularCad);
         editEnderecoCad     = view.findViewById(R.id.editLanchoneteCad);
-        editCepCad          = view.findViewById(R.id.editCategoriaCad);
+        editCepCad          = view.findViewById(R.id.editCepCad);
         editCidadeCad       = view.findViewById(R.id.editCidadeCad);
         editEstadoCad       = view.findViewById(R.id.editEstadoCad);
         editCartaoCredito   = view.findViewById(R.id.cbCartaoCredito);

@@ -10,4 +10,22 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="hint_nome_lanchonete">Nome da Lanchonete</string>
+    <string name="nome">Nome</string>
+    <string name="cadastrar_lanchonete">Cadastrar Lanchonete</string>
+    <string name="telefone">Telefone</string>
+    <string name="mascara_telefone">(99) 9999-9999</string>
+    <string name="hint_endereco_lanchonete">Endereço da Lanchonete</string>
+    <string name="endereco">Endereço</string>
+    <string name="celular">Celular</string>
+    <string name="mascara_cep">99999-999</string>
+    <string name="cidade">Cidade</string>
+    <string name="formas_de_pagamento">Formas de Pagamento</string>
+    <string name="cartao_de_credito">Cartão de Crédito</string>
+    <string name="cartao_de_debito">Cartão de Debito</string>
+    <string name="cartao_refeicao">Cartão Refeição</string>
+    <string name="dinheiro">Dinheiro</string>
+    <string name="cadastrar">Cadastrar</string>
+    <string name="cep">CEP</string>
+    <string name="estado">Estado</string>
 </resources>
