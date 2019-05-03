@@ -28,4 +28,17 @@
     <string name="cadastrar">Cadastrar</string>
     <string name="cep">CEP</string>
     <string name="estado">Estado</string>
+    <string name="comentario">Comentário</string>
+    <string name="avaliacoes">Avaliações:</string>
+    <string name="usuario">Usuário</string>
+    <string name="login">Login</string>
+    <string name="iconemenu">IconeMenu</string>
+    <string name="cadastrarLanchonete">Cadastrar Lanchonete</string>
+    <string name="cadastrar_produto">Cadastrar Produto</string>
+    <string name="lembrar">Lembre-se de mim</string>
+    <string name="esqueceu_sua_senha"><u>Esqueceu sua senha?</u></string>
+    <string name="entrar">Entrar</string>
+    <string name="ou"><b>ou</b></string>
+    <string name="entrar_sem_cadastro">Entrar sem cadastro</string>
+    <string name="cadastrar_se">cadastrar-se</string>
 </resources>

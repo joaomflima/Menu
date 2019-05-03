@@ -61,7 +61,7 @@ public class BuscaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_busca, container, false);
-
+        getActivity().setTitle("Buscar Produtos");
         // -------------------------- INICIO DO CÓDIGO ------------------------
 
         frameContainer = view.findViewById(R.id.frameContainer);

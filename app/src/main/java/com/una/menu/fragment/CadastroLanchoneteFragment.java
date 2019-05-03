@@ -16,6 +16,7 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
+import com.una.menu.activity.PrincipalActivity;
 import com.una.menu.util.MaskEditUtil;
 
 
@@ -46,7 +47,7 @@ public class CadastroLanchoneteFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lanchonete_cadastro, container, false);
-
+        getActivity().setTitle("Cadastrar Lanchonete");
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
         editTelefoneCad     = view.findViewById(R.id.editTelefoneCad);

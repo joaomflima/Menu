@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         editEmailLog = findViewById(R.id.editEmailLog);
         editSenhaLog = findViewById(R.id.editSenhaLog);
         btnLogar = findViewById(R.id.btnLogar);
-        textCadastrar = findViewById(R.id.textCadastrar);
-        textSemLog = findViewById(R.id.textSemLog);
+        textCadastrar = findViewById(R.id.btnCadastrar);
+        textSemLog = findViewById(R.id.btnSemLogar);
         progressLogin = findViewById(R.id.progressLogin);
 
         // Desativa o ProgressBar

@@ -14,7 +14,7 @@
             android:title="Lanchonetes" />
         <item
             android:id="@+id/nav_produto"
-            android:icon="@drawable/ic_lanchonete_cinza_24dp"
+            android:icon="@drawable/ic_pizza"
             android:title="Produtos" />
         <!--
         <item

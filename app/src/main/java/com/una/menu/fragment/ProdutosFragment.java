@@ -57,7 +57,7 @@ public class ProdutosFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_produtos, container, false);
-
+        getActivity().setTitle("Listar Produtos");
         // -------------------------- INICIO DO CÓDIGO ------------------------
 
         frameContainer = view.findViewById(R.id.frameContainer);

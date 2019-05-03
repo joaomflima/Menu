@@ -9,17 +9,18 @@
         android:id="@+id/textUsuarioAva"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Usuario" />
+        android:text="@string/usuario" />
 
-    <TextView
+    <RatingBar
         android:id="@+id/textNotaAva"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nota" />
+        android:numStars="5"
+        android:isIndicator="true"/>
 
     <TextView
         android:id="@+id/textComentarioAva"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comentario" />
+        android:text="@string/comentario" />
 </LinearLayout>

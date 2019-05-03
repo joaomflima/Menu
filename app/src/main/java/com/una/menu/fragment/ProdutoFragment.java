@@ -110,7 +110,7 @@ public class ProdutoFragment extends Fragment {
         pesquisaAvaliacao(id_produto);
 
 
-
+        getActivity().setTitle("Produto" + (bundle.getString("nome") == null ? "" : bundle.getString("nome")));
         return  view;
     }
 

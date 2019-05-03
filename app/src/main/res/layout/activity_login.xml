@@ -4,77 +4,125 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.LoginActivity">
+    tools:context=".activity.LoginActivity"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/logoMenu"
+        android:layout_width="94dp"
+        android:layout_height="129dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="@string/iconemenu"
+        android:foregroundGravity="center"
+        android:src="@drawable/ic_menu"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editEmailLog"
-        android:layout_width="255dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
-        android:gravity="center"
         android:hint="E-mail"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/logoMenu"/>
 
     <EditText
         android:id="@+id/editSenhaLog"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
-        android:gravity="center"
         android:hint="Senha"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editEmailLog" />
 
+    <CheckBox
+        android:id="@+id/checkLembrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/editSenhaLog"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:text="@string/lembrar"
+        android:buttonTint="@color/colorButtonsBackground"
+        android:checked="true"/>
+
+    <TextView
+        android:id="@+id/linkEsqueceuSenha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/checkLembrar"
+        app:layout_constraintEnd_toStartOf="parent"
+        android:text="@string/esqueceu_sua_senha"
+        android:clickable="true"
+        android:focusable="true" />
+
     <Button
         android:id="@+id/btnLogar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="2dp"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="72dp"
-        android:text="Logar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSenhaLog" />
-
-    <TextView
-        android:id="@+id/textCadastrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Ainda não possui uma conta? Crie Uma!"
-        android:textColor="#0000FF"
+        android:text="@string/entrar"
+        android:background="@color/colorButtonsBackground"
+        android:textColor="@color/colorButtonsText"
+        android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textSemLog" />
+        app:layout_constraintTop_toBottomOf="@+id/linkEsqueceuSenha" />
 
     <TextView
-        android:id="@+id/textSemLog"
-        android:layout_width="wrap_content"
+        android:id="@+id/textOu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
+        android:text="@string/ou"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:textColor="@color/colorButtonsBackground"
+        app:layout_constraintTop_toBottomOf="@id/btnLogar"/>
+
+    <Button
+        android:id="@+id/btnSemLogar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/entrar_sem_cadastro"
+        android:background="@color/colorButtonsBackground"
+        android:textColor="@color/colorButtonsText"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:text="Entre sem logar!"
-        android:textColor="#0000FF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLogar" />
+        android:layout_marginEnd="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="4dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textOu"
+        app:layout_constraintRight_toLeftOf="@+id/btnCadastrar"
+        app:layout_constraintHorizontal_chainStyle="spread"/>
+
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cadastrar_se"
+        android:background="@color/colorButtonsBackground"
+        android:textColor="@color/colorButtonsText"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintLeft_toRightOf="@+id/btnSemLogar"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textOu"
+        app:layout_constraintHorizontal_chainStyle="spread" />
 
     <ProgressBar
         android:id="@+id/progressLogin"

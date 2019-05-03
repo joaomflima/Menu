@@ -62,7 +62,7 @@ public class ProdutosViewFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_produtos, container, false);
-
+        getActivity().setTitle("Listar Produtos");
         btnCadastrar = view.findViewById(R.id.btnCadastrar);
 
         frameContainer = view.findViewById(R.id.frameContainer);

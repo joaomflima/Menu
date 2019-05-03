@@ -51,7 +51,7 @@ public class CadastroProdutoFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_produto_cadastro, container, false);
-
+        getActivity().setTitle("Cadastrar Produtos");
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
         editDescricaoCad     = view.findViewById(R.id.editTelefoneCad);

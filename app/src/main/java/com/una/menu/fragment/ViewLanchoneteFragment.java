@@ -52,7 +52,7 @@ public class ViewLanchoneteFragment extends Fragment {
         if(bundle != null) {
             lanchonete = (Lanchonete) bundle.getSerializable("LANCHONETE");
         }
-
+        getActivity().setTitle("Produto" + (lanchonete.getNome() == null ? "" : lanchonete.getNome()));
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
         editTelefoneCad     = view.findViewById(R.id.editTelefoneCad);
