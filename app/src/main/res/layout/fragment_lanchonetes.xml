@@ -6,12 +6,6 @@
     tools:context=".fragment.LanchonetesFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <Button
-        android:id="@+id/btnCadastrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|center_horizontal"
-        android:text="Cadastrar" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -37,5 +31,14 @@
         android:layout_marginTop="8dp">
 
     </android.support.v7.widget.RecyclerView>
+    <Button
+        android:id="@+id/btnCadastrar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:background="@color/colorButtonsBackground"
+        android:padding="20dp"
+        android:text="@string/cadastrar_lanchonete"
+        android:textColor="@color/colorButtonsText" />
 
 </FrameLayout>
