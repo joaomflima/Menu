@@ -8,8 +8,6 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hint_nome_lanchonete">Nome da Lanchonete</string>
     <string name="nome">Nome</string>
     <string name="cadastrar_lanchonete">Cadastrar Lanchonete</string>
@@ -31,9 +29,7 @@
     <string name="comentario">Comentário</string>
     <string name="avaliacoes">Avaliações:</string>
     <string name="usuario">Usuário</string>
-    <string name="login">Login</string>
     <string name="iconemenu">IconeMenu</string>
-    <string name="cadastrarLanchonete">Cadastrar Lanchonete</string>
     <string name="cadastrar_produto">Cadastrar Produto</string>
     <string name="lembrar">Lembre-se de mim</string>
     <string name="esqueceu_sua_senha"><u>Esqueceu sua senha?</u></string>
@@ -41,4 +37,36 @@
     <string name="ou"><b>ou</b></string>
     <string name="entrar_sem_cadastro">Entrar sem cadastro</string>
     <string name="cadastrar_se">cadastrar-se</string>
+    <string name="avaliar">Avaliar</string>
+    <string name="sua_avaliacao">Sua avaliação</string>
+    <string name="editar">Editar</string>
+    <string name="excluir">Excluir</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="nome_usuario">Nome do usuário</string>
+    <string name="email">E-mail</string>
+    <string name="email_usuario">E-mail para cadastro</string>
+    <string name="senha">Senha</string>
+    <string name="senha_cadastro">Senha para acesso ao sistema</string>
+    <string name="confirmar_senha">Confirmar Senha</string>
+    <string name="confirmar_senha_hint">Digite novamente a senha informada</string>
+    <string name="nome_produto">Nome do produto</string>
+    <string name="descricao">Descrição</string>
+    <string name="preco">Preço</string>
+    <string name="lanchonete">Lanchonete</string>
+    <string name="selecione_uma_lanchonete">Selecione uma lanchonete</string>
+    <string name="selecione_uma_categoria">Selecione uma categoria</string>
+    <string name="categoria">Categoria</string>
+    <string name="entrar_com">Entrar com</string>
+    <string name="imagemproduto">ImagemProduto</string>
+    <string name="titulo">Título</string>
+    <string name="empty_space" />
+    <string name="mapa">MAPA</string>
+    <string name="hifenComEspaco">-</string>
+    <string name="barraComEspaco">/</string>
+    <string name="bem_vindo">Bem vindo:</string>
+    <string name="button">Button</string>
+    <string name="busca_produtos">Busca Produtos</string>
+    <string name="lanchonetes">Lanchonetes</string>
+    <string name="produtos">Produtos</string>
+    <string name="sair">Sair</string>
 </resources>

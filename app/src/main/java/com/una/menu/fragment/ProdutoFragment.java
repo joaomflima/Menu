@@ -1,8 +1,12 @@
 package com.una.menu.fragment;
 
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,9 +14,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,13 +29,9 @@ import com.koushikdutta.ion.Ion;
 import com.squareup.picasso.Picasso;
 import com.una.menu.R;
 import com.una.menu.adapter.AvaliacaoAdapter;
-import com.una.menu.adapter.ProdutoAdapter;
 import com.una.menu.model.Avaliacao;
-import com.una.menu.model.Lanchonete;
-import com.una.menu.model.Produto;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -37,23 +39,14 @@ import java.util.List;
  */
 public class ProdutoFragment extends Fragment {
 
-//    TextView nome;
-    private TextView titulo;
-    private TextView descricao;
-    private TextView preco;
-//    private TextView avaliacao;
-    private ImageView imageView;
-    private TextView nome_lanchonete;
     private TextView endereco;
 
     private Context context;
-    private RecyclerView recyclerAvaliacao;
-    private List<Avaliacao> listaAvaliacao = new ArrayList<>();
-    private ProgressBar iconeLoad;
-    private String HOST = "https://menu-app.000webhostapp.com/webservice";
-
+    private final List<Avaliacao> listaAvaliacao = new ArrayList<>();
+    private EditText comentarioAvaliacao;
+    private RatingBar valorAvaliacao;
     // Configurar Adapter
-    AvaliacaoAdapter adapter = new AvaliacaoAdapter(listaAvaliacao);
+    final AvaliacaoAdapter adapter = new AvaliacaoAdapter(listaAvaliacao);
 
     public ProdutoFragment() {
         // Required empty public constructor
@@ -61,57 +54,89 @@ public class ProdutoFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_produto_view, container, false);
-        Lanchonete lanchonete = new Lanchonete();
 
-        titulo = view.findViewById(R.id.textTitProd);
-        descricao = view.findViewById(R.id.textDescProd);
-        preco = view.findViewById(R.id.textPrecoProd);
-        imageView = view.findViewById(R.id.imageProd);
+
+        //    TextView nome;
+        TextView titulo = view.findViewById(R.id.textTitProd);
+        TextView descricao = view.findViewById(R.id.textDescProd);
+        TextView preco = view.findViewById(R.id.textPrecoProd);
+        //    private TextView avaliacao;
+        ImageView imageView = view.findViewById(R.id.imageProd);
 //        avaliacao = view.findViewById(R.id.textAvaProd);
-        nome_lanchonete = view.findViewById(R.id.textLanchonete);
-        recyclerAvaliacao = view.findViewById(R.id.recyclerViewAva);
+        TextView nome_lanchonete = view.findViewById(R.id.textLanchonete);
+        RecyclerView recyclerAvaliacao = view.findViewById(R.id.recyclerViewAva);
         endereco = view.findViewById(R.id.textEndLanchonte);
+        Button btnAvaliar = view.findViewById(R.id.btnCadastrarAvaliacao);
+        comentarioAvaliacao = view.findViewById(R.id.editAvaliacao);
+        valorAvaliacao = view.findViewById(R.id.ratingAvaliacao);
+        Button btnMaps = view.findViewById(R.id.btnGoogleMaps);
 
+        Bundle bundle = getArguments();
 
-        Bundle bundle = new Bundle();
-        bundle = getArguments();
-
-        //titulo.setText(bundle.getString("id_produto"));
-        titulo.setText(bundle.getString("nome"));
-        descricao.setText(bundle.getString("descricao"));
-        preco.setText(bundle.getString("preco"));
+        if(bundle != null) {
+            //titulo.setText(bundle.getString("id_produto"));
+            titulo.setText(bundle.getString("nome"));
+            descricao.setText(bundle.getString("descricao"));
+            preco.setText(bundle.getString("preco"));
 //        avaliacao.setText(bundle.getString("avaliacao"));
-        nome_lanchonete.setText(bundle.getString("nome_lanchonete"));
-        endereco.setText(bundle.getString("end_lanchonete"));
+            nome_lanchonete.setText(bundle.getString("nome_lanchonete"));
+            endereco.setText(bundle.getString("end_lanchonete"));
 
-        //Carregar imagem por URL
-        Picasso.get()
-                .load(bundle.getString("imagem"))
-                .resize(100, 80)
-                .into(imageView);
-        System.out.println(bundle);
+            //Carregar imagem por URL
+            String imagem = bundle.getString("imagem");
+            if (!(imagem == null || imagem.length() == 0)) {
+                Picasso.get()
+                        .load(bundle.getString("imagem"))
+                        .resize(100, 80)
+                        .into(imageView);
+                System.out.println(bundle);
+            }
+
+            // Configurar RecyclerView
+            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
+            recyclerAvaliacao.setLayoutManager(layoutManager);
+            recyclerAvaliacao.setHasFixedSize(true);
+            recyclerAvaliacao.addItemDecoration(new DividerItemDecoration(context, LinearLayout.VERTICAL));
+            recyclerAvaliacao.setAdapter(adapter);
+
+            String id_produto;
+            id_produto = bundle.getString("id_produto");
 
 
-        // Configurar RecyclerView
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(context);
-        recyclerAvaliacao.setLayoutManager(layoutManager);
-        recyclerAvaliacao.setHasFixedSize(true);
-        recyclerAvaliacao.addItemDecoration(new DividerItemDecoration(context, LinearLayout.VERTICAL));
-        recyclerAvaliacao.setAdapter(adapter);
+            if (id_produto != null) {
+                pesquisaAvaliacao(id_produto);
+            }
 
-        String id_produto;
-        id_produto = bundle.getString("id_produto");
+            Activity currentActivity = getActivity();
+            if(currentActivity != null)
+                currentActivity.setTitle("Produto: " + (bundle.getString("nome") == null ? "" : bundle.getString("nome")));
+        }
+        btnAvaliar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                cadastrarAvaliacao();
+            }
+        });
+        btnMaps.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(final View v) {
+                chamarMaps();
+            }
+        });
 
+        return view;
+    }
 
-        pesquisaAvaliacao(id_produto);
-
-
-        getActivity().setTitle("Produto" + (bundle.getString("nome") == null ? "" : bundle.getString("nome")));
-        return  view;
+    private void chamarMaps() {
+        String enderecoUri = Uri.encode(endereco.getText().toString());
+        Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + enderecoUri);
+        Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        mapIntent.setPackage("com.google.android.apps.maps");
+        startActivity(mapIntent);
     }
 
     //Declara um atributo para guardar o context.
@@ -127,6 +152,7 @@ public class ProdutoFragment extends Fragment {
 //        fechaTeclado();
 //            iconeLoad.setVisibility(View.VISIBLE);
 
+        String HOST = "https://menu-app.000webhostapp.com/webservice";
         String url = HOST + "/readprodutos/readAvaliacoes.php";
 //        listaProduto.clear();
 
@@ -187,4 +213,14 @@ public class ProdutoFragment extends Fragment {
         }
     }
 
+    private void cadastrarAvaliacao(){
+        Toast.makeText(context, "Avaliação cadastrada!", Toast.LENGTH_LONG).show();
+        comentarioAvaliacao.setText("");
+        valorAvaliacao.setRating(0);
+        ProdutosFragment produtosFragment= new ProdutosFragment();
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frameContainer, produtosFragment,"findThisFragment")
+                .addToBackStack(null)
+                .commit();
+    }
 }

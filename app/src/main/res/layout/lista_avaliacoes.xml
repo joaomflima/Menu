@@ -13,9 +13,10 @@
 
     <RatingBar
         android:id="@+id/textNotaAva"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:numStars="5"
+        style="@style/Base.Widget.AppCompat.RatingBar.Small"
         android:isIndicator="true"/>
 
     <TextView

@@ -1,9 +1,11 @@
 package com.una.menu.fragment;
 
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
@@ -12,11 +14,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.support.v7.widget.SearchView;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -31,7 +30,6 @@ import com.una.menu.adapter.ProdutoAdapter;
 import com.una.menu.model.Produto;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
@@ -42,31 +40,28 @@ public class ProdutosViewFragment extends Fragment {
 
     private Context context;
 
-    // Variaveis
-    private FrameLayout frameContainer;
-    private RecyclerView recyclerProdutos;
-    private List<Produto> listaProduto = new ArrayList<>();
+    private final List<Produto> listaProduto = new ArrayList<>();
     private ProgressBar iconeLoad;
-    private Button btnCadastrar;
-    private String HOST = "https://menu-app.000webhostapp.com/webservice";
 
     // Configurar Adapter
-    ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
+    final ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
 
 
     public ProdutosViewFragment() {
         // Required empty public constructor
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_produtos, container, false);
-        getActivity().setTitle("Listar Produtos");
-        btnCadastrar = view.findViewById(R.id.btnCadastrar);
+        Activity currentActivity = getActivity();
+        if(currentActivity != null)
+            currentActivity.setTitle("Listar Produtos");
+        Button btnCadastrar = view.findViewById(R.id.btnCadastrar);
 
-        frameContainer = view.findViewById(R.id.frameContainer);
-        recyclerProdutos = view.findViewById(R.id.recyclerViewProdutos);
+        // Variaveis
+        RecyclerView recyclerProdutos = view.findViewById(R.id.recyclerViewProdutos);
         iconeLoad = view.findViewById(R.id.progressBar2);
 
         iconeLoad.setVisibility(View.VISIBLE);
@@ -146,6 +141,7 @@ public class ProdutosViewFragment extends Fragment {
 //        fechaTeclado();
         iconeLoad.setVisibility(View.VISIBLE);
 
+        String HOST = "https://menu-app.000webhostapp.com/webservice";
         String url = HOST + "/readprodutos/read_2.php";
 
         listaProduto.clear();
@@ -178,14 +174,16 @@ public class ProdutosViewFragment extends Fragment {
                                 listaProduto.add(p);
                             }
 
-                            listaProduto.sort(new Comparator<Produto>() {
-                                @Override
-                                public int compare(Produto o1, Produto o2) {
-                                    return o1.getPreco().compareTo(o2.getPreco());
-//                                    return -o1.getPreco().compareTo( o2.getPreco());
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                listaProduto.sort(new Comparator<Produto>() {
+                                    @Override
+                                    public int compare(Produto o1, Produto o2) {
+                                        return o1.getPreco().compareTo(o2.getPreco());
+    //                                    return -o1.getPreco().compareTo( o2.getPreco());
 
-                                }
-                            });
+                                    }
+                                });
+                            }
 
                             adapter.notifyDataSetChanged();
 
@@ -207,20 +205,7 @@ public class ProdutosViewFragment extends Fragment {
     }
 
 
-    public void setaProdutoManual() {
-        Produto p = new Produto();
-        p.setId_produto("0");
-        p.setNome("Suco");
-        p.setDescricao("Suco Natural");
-        p.setPreco("R$ 1,50");
-        p.setImagem();
-
-        listaProduto.add(p);
-
-        iconeLoad.setVisibility(View.GONE);
-    }
-
-   /* private void fechaTeclado() {
+    /* private void fechaTeclado() {
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

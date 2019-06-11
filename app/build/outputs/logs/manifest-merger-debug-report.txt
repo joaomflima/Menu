@@ -1,0 +1,233 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\a46598351ba45205d23adfad96736534\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\4a57348bb458b5f7ef11fe78c158dde5\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\9fc168f7de8499a52be25b6bd9053ad9\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:17:1-39:12
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-16.0.0.aar\185e438426b7474e81a1f7dd7a996a92\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-16.0.0.aar\b8cc6932db36b49f5652cff15cccd6d6\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\ca27148a934e3d6b69952fc33d9f00d2\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\90a2112680eac318a7194fd15e113d0b\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e4752ebed4c620c2a4d9f9d5aa117755\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\9128bfb77395329b8e9fd96da5d44d30\AndroidManifest.xml:17:1-22:12
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\3822a497c41f0fc8f2965562b79b5b44\AndroidManifest.xml:2:1-16:12
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\c7e31fe3eafd835be8d3477c7df44c5f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:2:1-14:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\d65af233837db3bd792cd71a5da4ce6d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\41ce78f7a66fa2e75834f70f8a9859e9\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\02847546c07b479369fba8cc3c898381\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\bfc6aa80b8f7cd2fec81207d9537534b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\d0adb43fdf96e980d0a25d29c6e9d11b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\8d265dbd20dba1f3c769ebbebb65c605\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\8f726d8da6a658aedac1ec63ceac0b22\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\cdd9accdbe2d6cefdb3cd881acacdc5c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:exifinterface:27.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.0.aar\f8e0ef80d13e15e4a9f36264eaa44650\AndroidManifest.xml:17:1-22:12
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\df5dc4e155d753116ddfdff1dfef1910\AndroidManifest.xml:2:1-16:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\2b06d00c256181a672ee451b7553768c\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\ae44d096ef67eff6508cb59ebf4d127c\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\c00b8c7c4c86c3c578db768d9f658f20\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\7c6c9bade28d60851ae8887da1c011af\AndroidManifest.xml:17:1-22:12
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+	package
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:3:5-27
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:1-29:12
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:5:5-67
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\3822a497c41f0fc8f2965562b79b5b44\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\3822a497c41f0fc8f2965562b79b5b44\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\df5dc4e155d753116ddfdff1dfef1910\AndroidManifest.xml:11:5-67
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\df5dc4e155d753116ddfdff1dfef1910\AndroidManifest.xml:11:5-67
+	android:name
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:6:22-76
+application
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:8:5-27:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\9fc168f7de8499a52be25b6bd9053ad9\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\9fc168f7de8499a52be25b6bd9053ad9\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:22:5-37:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\ca27148a934e3d6b69952fc33d9f00d2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\ca27148a934e3d6b69952fc33d9f00d2\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\90a2112680eac318a7194fd15e113d0b\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\90a2112680eac318a7194fd15e113d0b\AndroidManifest.xml:22:5-26:19
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\3822a497c41f0fc8f2965562b79b5b44\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\3822a497c41f0fc8f2965562b79b5b44\AndroidManifest.xml:13:5-14:19
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:7:5-12:19
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:7:5-12:19
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\df5dc4e155d753116ddfdff1dfef1910\AndroidManifest.xml:13:5-14:19
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\df5dc4e155d753116ddfdff1dfef1910\AndroidManifest.xml:13:5-14:19
+	android:supportsRtl
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:13:9-35
+	android:label
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:11:9-41
+	android:roundIcon
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:12:9-54
+	android:icon
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:10:9-43
+	android:allowBackup
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:9:9-35
+	android:theme
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:14:9-40
+activity#com.una.menu.activity.LoginActivity
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:15:9-21:20
+	android:windowSoftInputMode
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:15:58-97
+	android:name
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:15:19-57
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:16:13-20:29
+action#android.intent.action.MAIN
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:17:17-69
+	android:name
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:17:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:19:17-77
+	android:name
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:19:27-74
+activity#com.una.menu.activity.CadastroClienteActivity
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:22:9-70
+	android:name
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:22:19-67
+activity#com.una.menu.activity.PrincipalActivity
+ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:23:9-26:59
+	android:label
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:25:13-61
+	android:windowSoftInputMode
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:23:19-58
+	android:theme
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:26:13-56
+	android:name
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml:24:13-55
+uses-sdk
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\a46598351ba45205d23adfad96736534\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\a46598351ba45205d23adfad96736534\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\4a57348bb458b5f7ef11fe78c158dde5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\4a57348bb458b5f7ef11fe78c158dde5\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\9fc168f7de8499a52be25b6bd9053ad9\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\9fc168f7de8499a52be25b6bd9053ad9\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-16.0.0.aar\185e438426b7474e81a1f7dd7a996a92\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-api-phone:16.0.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-api-phone-16.0.0.aar\185e438426b7474e81a1f7dd7a996a92\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-16.0.0.aar\b8cc6932db36b49f5652cff15cccd6d6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-auth-base:16.0.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-base-16.0.0.aar\b8cc6932db36b49f5652cff15cccd6d6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\ca27148a934e3d6b69952fc33d9f00d2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\ca27148a934e3d6b69952fc33d9f00d2\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\90a2112680eac318a7194fd15e113d0b\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\90a2112680eac318a7194fd15e113d0b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e4752ebed4c620c2a4d9f9d5aa117755\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\e4752ebed4c620c2a4d9f9d5aa117755\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\9128bfb77395329b8e9fd96da5d44d30\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\9128bfb77395329b8e9fd96da5d44d30\AndroidManifest.xml:20:5-44
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\3822a497c41f0fc8f2965562b79b5b44\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.ion:ion:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\ion-2.2.1.aar\3822a497c41f0fc8f2965562b79b5b44\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\c7e31fe3eafd835be8d3477c7df44c5f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\c7e31fe3eafd835be8d3477c7df44c5f\AndroidManifest.xml:20:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:5:5-44
+MERGED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:5:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\d65af233837db3bd792cd71a5da4ce6d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\d65af233837db3bd792cd71a5da4ce6d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\41ce78f7a66fa2e75834f70f8a9859e9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\41ce78f7a66fa2e75834f70f8a9859e9\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\02847546c07b479369fba8cc3c898381\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\02847546c07b479369fba8cc3c898381\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\bfc6aa80b8f7cd2fec81207d9537534b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\bfc6aa80b8f7cd2fec81207d9537534b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\d0adb43fdf96e980d0a25d29c6e9d11b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\d0adb43fdf96e980d0a25d29c6e9d11b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\8d265dbd20dba1f3c769ebbebb65c605\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\8d265dbd20dba1f3c769ebbebb65c605\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\8f726d8da6a658aedac1ec63ceac0b22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\8f726d8da6a658aedac1ec63ceac0b22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\cdd9accdbe2d6cefdb3cd881acacdc5c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\cdd9accdbe2d6cefdb3cd881acacdc5c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.0.aar\f8e0ef80d13e15e4a9f36264eaa44650\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.0.aar\f8e0ef80d13e15e4a9f36264eaa44650\AndroidManifest.xml:20:5-44
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\df5dc4e155d753116ddfdff1dfef1910\AndroidManifest.xml:7:5-9:41
+MERGED from [com.koushikdutta.async:androidasync:2.2.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\androidasync-2.2.1.aar\df5dc4e155d753116ddfdff1dfef1910\AndroidManifest.xml:7:5-9:41
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\2b06d00c256181a672ee451b7553768c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\2b06d00c256181a672ee451b7553768c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\ae44d096ef67eff6508cb59ebf4d127c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\ae44d096ef67eff6508cb59ebf4d127c\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\c00b8c7c4c86c3c578db768d9f658f20\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\c00b8c7c4c86c3c578db768d9f658f20\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\7c6c9bade28d60851ae8887da1c011af\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\7c6c9bade28d60851ae8887da1c011af\AndroidManifest.xml:20:5-44
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+		ADDED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Menu2\Menu\app\src\main\AndroidManifest.xml
+activity#com.google.android.gms.auth.api.signin.internal.SignInHubActivity
+ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:23:9-27:75
+	android:excludeFromRecents
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:25:13-46
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:26:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:27:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:24:13-93
+service#com.google.android.gms.auth.api.signin.RevocationBoundService
+ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:33:9-36:110
+	android:exported
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:35:13-36
+	android:permission
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:36:13-107
+	android:name
+		ADDED from [com.google.android.gms:play-services-auth:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-auth-16.0.1.aar\95c00def1fefc719f026c27a6f996ec2\AndroidManifest.xml:34:13-89
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\35c620bab56d935f7d5fd24a626ad8d0\AndroidManifest.xml:24:13-79
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\90a2112680eac318a7194fd15e113d0b\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\90a2112680eac318a7194fd15e113d0b\AndroidManifest.xml:25:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\90a2112680eac318a7194fd15e113d0b\AndroidManifest.xml:24:13-58
+provider#com.squareup.picasso.PicassoProvider
+ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:8:9-11:40
+	android:authorities
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:10:13-72
+	android:exported
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:11:13-37
+	android:name
+		ADDED from [com.squareup.picasso:picasso:2.71828] C:\Users\joao.lima\.gradle\caches\transforms-1\files-1.1\picasso-2.71828.aar\6082af3bc71fcfb41c893202b5ebc5bb\AndroidManifest.xml:9:13-64

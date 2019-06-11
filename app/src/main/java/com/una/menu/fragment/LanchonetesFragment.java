@@ -1,21 +1,17 @@
 package com.una.menu.fragment;
 
 
-import android.content.Context;
-import android.content.Intent;
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
@@ -34,16 +30,10 @@ import java.util.List;
  */
 public class LanchonetesFragment extends Fragment {
 
-    // private TextView textView_nome;
-    private RecyclerView recyclerLanchonetes;
-    private List<Lanchonete> listaLanchonete = new ArrayList<>();
+    private final List<Lanchonete> listaLanchonete = new ArrayList<>();
     private LanchoneteAdapter lanchoneteAdapter;
-    private String HOST = "https://menu-app.000webhostapp.com/webservice";
     // private String HOST = "http://localhost/webservice";
     private ProgressBar progressBar;
-
-    private TextView textLanchonete;
-    private Button btnCadastrar;
 
     public LanchonetesFragment() {
         // Required empty public constructor
@@ -51,18 +41,20 @@ public class LanchonetesFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lanchonetes, container, false);
-        getActivity().setTitle("Listar Lanchonetes");
-        textLanchonete = view.findViewById(R.id.textLanchonete);
-        btnCadastrar = view.findViewById(R.id.btnCadastrar);
+        Activity currentActivity = getActivity();
+        if(currentActivity != null)
+            currentActivity.setTitle("Listar Lanchonetes");
+        Button btnCadastrar = view.findViewById(R.id.btnCadastrar);
 
         //Configurar adapter
-        lanchoneteAdapter = new LanchoneteAdapter(getContext(), listaLanchonete);
+        lanchoneteAdapter = new LanchoneteAdapter(listaLanchonete);
 
-        recyclerLanchonetes = view.findViewById(R.id.recyclerLanchonetes);
+        // private TextView textView_nome;
+        RecyclerView recyclerLanchonetes = view.findViewById(R.id.recyclerLanchonetes);
         // btnCadastrarLanchonete = findViewById(R.id.btnEditarLanchonete);
         progressBar = view.findViewById(R.id.progressBar);
 
@@ -96,12 +88,13 @@ public class LanchonetesFragment extends Fragment {
         return view;
     }
 
-    private void lerLanchonetes() {
+    public void lerLanchonetes() {
 
-        fechaTeclado();
+//        fechaTeclado();
 
         progressBar.setVisibility(View.VISIBLE);
 
+        String HOST = "https://menu-app.000webhostapp.com/webservice";
         String url = HOST + "/lanchonete/read.php";
 
         Ion.with(this.getContext())
@@ -113,7 +106,7 @@ public class LanchonetesFragment extends Fragment {
 
 
                         try {
-
+                            listaLanchonete.clear();
                             for(int i = 0; i < result.size(); i++) {
 
                                 JsonObject obj = result.get(i).getAsJsonObject();
@@ -147,12 +140,12 @@ public class LanchonetesFragment extends Fragment {
 
     }
 
-    private void fechaTeclado() {
-        View view = this.getView();
-        if (view != null) {
-            // InputMethodManager imm = (InputMethodManager)view.getSystemService(Context.INPUT_METHOD_SERVICE);
-            // imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
+//    private void fechaTeclado() {
+//        View view = this.getView();
+//        if (view != null) {
+//            InputMethodManager imm = (InputMethodManager)view.getSystemService(Context.INPUT_METHOD_SERVICE);
+//            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+//        }
+//    }
 
 }

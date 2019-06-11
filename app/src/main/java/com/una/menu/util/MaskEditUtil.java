@@ -6,18 +6,15 @@ import android.widget.EditText;
 
 public abstract class MaskEditUtil {
 
-    public static final String FORMAT_CPF = "###.###.###-##";
     public static final String FORMAT_FONE = "(##)####-####";
     public static final String FORMAT_CEP = "#####-###";
-    public static final String FORMAT_DATE = "##/##/####";
-    public static final String FORMAT_HOUR = "##:##";
 
     /**
      * Método que deve ser chamado para realizar a formatação
      *
-     * @param ediTxt
-     * @param mask
-     * @return
+     * @param ediTxt Campo de edição para aplicar a máscara
+     * @param mask Padrão da máscara
+     * @return TextWatcher
      */
     public static TextWatcher mask(final EditText ediTxt, final String mask) {
         return new TextWatcher() {

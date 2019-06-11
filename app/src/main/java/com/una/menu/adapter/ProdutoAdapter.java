@@ -17,7 +17,7 @@ import java.util.List;
 public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHolder> {
 
     // Atributos
-    private List<Produto> listaProdutos;
+    private final List<Produto> listaProdutos;
 
     // Construtor
     public ProdutoAdapter(List<Produto> lista ) {
@@ -53,10 +53,13 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
 
 
 //Carregar imagem por URL
-        Picasso.get()
-                .load(produto.getImagem())
-                .resize(100, 80)
-                .into(holder.imageView);
+        String imagem = produto.getImagem();
+        if(!(imagem == null || imagem.length() == 0)) {
+            Picasso.get()
+                    .load(produto.getImagem())
+                    .resize(100, 80)
+                    .into(holder.imageView);
+        }
 
 
 
@@ -74,12 +77,12 @@ public class ProdutoAdapter extends RecyclerView.Adapter<ProdutoAdapter.MyViewHo
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nome;
-        TextView descricao;
-        TextView preco;
+        final TextView nome;
+        final TextView descricao;
+        final TextView preco;
         //TextView avaliacao;
-        ImageView imageView;
-        TextView nomeLanchonete;
+        final ImageView imageView;
+        final TextView nomeLanchonete;
 
 
         public MyViewHolder(View itemView) {

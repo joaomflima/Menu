@@ -7,15 +7,19 @@
         <item
             android:id="@+id/nav_busca"
             android:icon="@drawable/ic_busca_produtos_24dp"
-            android:title="Busca Produtos" />
+            android:title="@string/busca_produtos" />
         <item
             android:id="@+id/nav_lanchonete"
             android:icon="@drawable/ic_lanchonete_cinza_24dp"
-            android:title="Lanchonetes" />
+            android:title="@string/lanchonetes" />
         <item
             android:id="@+id/nav_produto"
             android:icon="@drawable/ic_pizza"
-            android:title="Produtos" />
+            android:title="@string/produtos" />
+        <item
+            android:id="@+id/nav_logoff"
+            android:icon="@drawable/ic_logout"
+            android:title="@string/sair" />
         <!--
         <item
             android:id="@+id/nav_camera"
@@ -35,18 +39,4 @@
             android:title="Configurações" />
             -->
     </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
-
 </menu>

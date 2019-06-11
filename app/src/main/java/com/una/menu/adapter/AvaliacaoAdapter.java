@@ -5,23 +5,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
-import com.squareup.picasso.Picasso;
 import com.una.menu.R;
 import com.una.menu.model.Avaliacao;
-import com.una.menu.model.Produto;
 
 import java.util.List;
 
 public class AvaliacaoAdapter extends RecyclerView.Adapter<AvaliacaoAdapter.MyViewHolder> {
 
-    // Atributos
+// Atributos
 //    private List<Produto> listaProdutos;
 //    private Context context;
 
-    private List<Avaliacao> listaAvaliacao;
+    private final List<Avaliacao> listaAvaliacao;
 
 //    // Construtor
 //    public AvaliacaoAdapter(List<Produto> lista )
@@ -56,9 +54,10 @@ public class AvaliacaoAdapter extends RecyclerView.Adapter<AvaliacaoAdapter.MyVi
         holder.nomeLanchonete.setText(produto.getNomeLanchonete());*/
 
         Avaliacao avaliacao = listaAvaliacao.get(position);
+        String nota = avaliacao.getNota();
         holder.usuario_avaliacao.setText(avaliacao.getCliente());
         holder.comentario.setText(avaliacao.getComentario());
-        holder.nota.setText(avaliacao.getNota());
+        holder.nota.setRating(Integer.parseInt(nota.substring(nota.length() - 1)));
 
     }
 
@@ -70,9 +69,9 @@ public class AvaliacaoAdapter extends RecyclerView.Adapter<AvaliacaoAdapter.MyVi
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
 
-        TextView nota;
-        TextView comentario;
-        TextView usuario_avaliacao;
+        final RatingBar nota;
+        final TextView comentario;
+        final TextView usuario_avaliacao;
 
 
         public MyViewHolder(View itemView) {

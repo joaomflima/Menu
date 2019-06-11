@@ -1,9 +1,11 @@
 package com.una.menu.fragment;
 
 
+import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
@@ -13,9 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v7.widget.SearchView;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -30,7 +30,6 @@ import com.una.menu.adapter.ProdutoAdapter;
 import com.una.menu.model.Produto;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 
@@ -41,32 +40,31 @@ public class BuscaFragment extends Fragment {
 
     private Context context;
 
-    // Variaveis
-    private FrameLayout frameContainer;
-    private SearchView searchProdutos;
-    private RecyclerView recyclerProdutos;
-    private List<Produto> listaProduto = new ArrayList<>();
+    private final List<Produto> listaProduto = new ArrayList<>();
     private ProgressBar iconeLoad;
-    private String HOST = "https://menu-app.000webhostapp.com/webservice";
+    private final String HOST = "https://menu-app.000webhostapp.com/webservice";
 
     // Configurar Adapter
-    ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
+    final ProdutoAdapter adapter = new ProdutoAdapter(listaProduto);
 
 
     public BuscaFragment() {
         // Required empty public constructor
     }
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_busca, container, false);
-        getActivity().setTitle("Buscar Produtos");
+
+        final Activity currentActivity = getActivity();
+        if(currentActivity != null)
+            currentActivity.setTitle("Buscar Produtos");
         // -------------------------- INICIO DO CÓDIGO ------------------------
 
-        frameContainer = view.findViewById(R.id.frameContainer);
-        searchProdutos = view.findViewById(R.id.buscaProdutos);
-        recyclerProdutos = view.findViewById(R.id.recyclerViewProdutos);
+        // Variaveis
+        SearchView searchProdutos = view.findViewById(R.id.buscaProdutos);
+        RecyclerView recyclerProdutos = view.findViewById(R.id.recyclerViewProdutos);
         iconeLoad = view.findViewById(R.id.progressBar2);
 
         iconeLoad.setVisibility(View.VISIBLE);
@@ -81,10 +79,12 @@ public class BuscaFragment extends Fragment {
 
             @Override
             public boolean onQueryTextSubmit(String query) {
-
-                String produto = "%" + query + "%";
-                pesquisaProdutos(produto);
-
+                if(query.length() == 0)
+                    buscaAutomaticaProdutos();
+                else {
+                    String produto = "%" + query + "%";
+                    pesquisaProdutos(produto);
+                }
                 return true;
             }
 
@@ -129,9 +129,11 @@ public class BuscaFragment extends Fragment {
                                 ProdutoFragment produtoFragment = new ProdutoFragment();
                                 produtoFragment.setArguments(bundle);
 
-                                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                                fragmentTransaction.replace(R.id.frameContainer, produtoFragment);
-                                fragmentTransaction.commit();
+                                if(getActivity() != null) {
+                                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                                    fragmentTransaction.replace(R.id.frameContainer, produtoFragment);
+                                    fragmentTransaction.commit();
+                                }
                             }
 
                             @Override
@@ -191,14 +193,16 @@ public class BuscaFragment extends Fragment {
                                 listaProduto.add(p);
                             }
 
-                            listaProduto.sort(new Comparator<Produto>() {
-                                @Override
-                                public int compare(Produto o1, Produto o2) {
-                                    return o1.getPreco().compareTo(o2.getPreco());
-//                                    return -o1.getPreco().compareTo( o2.getPreco());
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                listaProduto.sort(new Comparator<Produto>() {
+                                    @Override
+                                    public int compare(Produto o1, Produto o2) {
+                                        return o1.getPreco().compareTo(o2.getPreco());
+    //                                    return -o1.getPreco().compareTo( o2.getPreco());
 
-                                }
-                            });
+                                    }
+                                });
+                            }
 
                             adapter.notifyDataSetChanged();
 
@@ -255,13 +259,15 @@ public class BuscaFragment extends Fragment {
 //                                    System.out.println(p.getNome());
                                 }
 
-                                listaProduto.sort(new Comparator<Produto>() {
-                                    @Override
-                                    public int compare(Produto o1, Produto o2) {
-                                        return o1.getPreco().compareTo(o2.getPreco());
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                                    listaProduto.sort(new Comparator<Produto>() {
+                                        @Override
+                                        public int compare(Produto o1, Produto o2) {
+                                            return o1.getPreco().compareTo(o2.getPreco());
 
-                                    }
-                                });
+                                        }
+                                    });
+                                }
 
                                 adapter.notifyDataSetChanged();
 
@@ -275,7 +281,7 @@ public class BuscaFragment extends Fragment {
 
                             System.out.println("---------INICIO----------\n");
                             for (int i = 0; i < listaProduto.size(); i++) {
-                                listaProduto.get(i).getNome();
+                                System.out.println(listaProduto.get(i).getNome());
                             }
                             System.out.println("---------FIM----------\n");
 
@@ -292,21 +298,7 @@ public class BuscaFragment extends Fragment {
     }
 
 
-    public void setaProdutoManual() {
-        Produto p = new Produto();
-        p.setId_produto("0");
-        p.setNome("Suco");
-        p.setDescricao("Suco Natural");
-        p.setPreco("R$ 1,50");
-        p.setImagem();
-
-        listaProduto.add(p);
-
-        iconeLoad.setVisibility(View.GONE);
-    }
-
-
-   /* private void fechaTeclado() {
+    /* private void fechaTeclado() {
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);

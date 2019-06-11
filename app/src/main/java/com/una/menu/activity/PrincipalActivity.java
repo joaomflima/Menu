@@ -1,8 +1,8 @@
 package com.una.menu.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,22 +12,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.FrameLayout;
-import android.widget.TextView;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.una.menu.R;
 import com.una.menu.fragment.BuscaFragment;
 import com.una.menu.fragment.LanchonetesFragment;
-import com.una.menu.fragment.ProdutosFragment;
 import com.una.menu.fragment.ProdutosViewFragment;
 
 public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    // Variaveis
-    private FrameLayout frameContainer;
-    private TextView textNomeUsuario;
-    private TextView textEmailUsuario;
 
 
     @Override
@@ -42,10 +37,7 @@ public class PrincipalActivity extends AppCompatActivity
         this.setTitle("Menu");
 
         // Variaveis
-        frameContainer = findViewById(R.id.frameContainer);
-        //textNomeUsuario = findViewById(R.id.textNomeUsuario);
-        //textEmailUsuario = findViewById(R.id.textEmailUsuario);
-
+        // Variaveis
 
         // Chama o Fragment de Busca
         BuscaFragment buscaFragment = new BuscaFragment();
@@ -54,15 +46,16 @@ public class PrincipalActivity extends AppCompatActivity
         fragmentTransaction.commit();
 
         // Recebe id e nome do Usuario
-        int idUsuario = getIntent().getExtras().getInt("id_usuario");
-        String nomeUsuario = getIntent().getExtras().getString("nome_usuario");
-
+        //if(getIntent().getExtras() != null) {
+            //int idUsuario = getIntent().getExtras().getInt("id_usuario");
+            //String nomeUsuario = getIntent().getExtras().getString("nome_usuario");
+        //}
 
 
         // Meus Códigos FIM ----------------------------------------------------------------------------------------------------------------
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         /* BOTÃO FLUTUANTE
@@ -75,20 +68,20 @@ public class PrincipalActivity extends AppCompatActivity
             }
         });
         */
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -120,7 +113,7 @@ public class PrincipalActivity extends AppCompatActivity
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
@@ -134,11 +127,7 @@ public class PrincipalActivity extends AppCompatActivity
 
         } */
 
-        if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        } else if (id == R.id.nav_lanchonete) {
+        if (id == R.id.nav_lanchonete) {
 
             /*Intent abreCadastroLanch = new Intent(getApplicationContext(), CadLanchActivity.class);
             startActivity(abreCadastroLanch);*/
@@ -164,9 +153,18 @@ public class PrincipalActivity extends AppCompatActivity
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frameContainer, buscaFragment);
             fragmentTransaction.commit();
+        } else if(id == R.id.nav_logoff){
+            GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                    .requestIdToken("475087318850-risdmndu2abpf0nadmaoo617kgr7q6us.apps.googleusercontent.com")
+                    .requestEmail()
+                    .build();
+            GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+            mGoogleSignInClient.signOut();
+            Intent abreInicio = new Intent(this, LoginActivity.class);
+            startActivity(abreInicio);
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

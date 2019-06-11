@@ -15,7 +15,6 @@ public class Lanchonete implements Serializable {
     private String estado;
     private String id_pagamento;
     private String id_cliente;
-
     // Construtor
     public Lanchonete() {
 
@@ -86,19 +85,19 @@ public class Lanchonete implements Serializable {
         this.estado = estado;
     }
 
-    public String getId_pagamento() {
-        return id_pagamento;
-    }
-
     public void setId_pagamento(String id_pagamento) {
         this.id_pagamento = id_pagamento;
     }
 
-    public String getId_cliente() {
-        return id_cliente;
-    }
-
     public void setId_cliente(String id_cliente) {
         this.id_cliente = id_cliente;
+    }
+
+    public String getId_pagamento() {
+        return id_pagamento;
+    }
+
+    public String getId_cliente() {
+        return id_cliente;
     }
 }

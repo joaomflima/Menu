@@ -1,7 +1,9 @@
 package com.una.menu.fragment;
 
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +18,6 @@ import com.google.gson.JsonObject;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
-import com.una.menu.activity.PrincipalActivity;
 import com.una.menu.util.MaskEditUtil;
 
 
@@ -33,7 +34,7 @@ public class CadastroLanchoneteFragment extends Fragment {
     ProgressBar progressBar;
 
     // Variaveis para conexão com web service.
-    String HOST = "https://menu-app.000webhostapp.com/webservice";
+    final String HOST = "https://menu-app.000webhostapp.com/webservice";
     // String HOST = "http://localhost/webservice";
 
     public CadastroLanchoneteFragment() {
@@ -42,15 +43,17 @@ public class CadastroLanchoneteFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lanchonete_cadastro, container, false);
-        getActivity().setTitle("Cadastrar Lanchonete");
+        Activity currentActivity = getActivity();
+        if(currentActivity != null)
+            currentActivity.setTitle("Cadastrar Lanchonete");
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
-        editTelefoneCad     = view.findViewById(R.id.editTelefoneCad);
+        editTelefoneCad     = view.findViewById(R.id.editDescricaoCad);
         editTelefoneCad.addTextChangedListener(MaskEditUtil.mask(editTelefoneCad, MaskEditUtil.FORMAT_FONE));
         editCelularCad      = view.findViewById(R.id.editCelularCad);
         editCelularCad.addTextChangedListener(MaskEditUtil.mask(editCelularCad, MaskEditUtil.FORMAT_FONE));
@@ -86,7 +89,7 @@ public class CadastroLanchoneteFragment extends Fragment {
                 String URL = HOST + "/lanchonete/create.php";
 
                 if (nome.isEmpty() || telefone.isEmpty() || celular.isEmpty() || endereco.isEmpty()
-                        || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty() || id_pagamento == "0") {
+                        || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty() || id_pagamento.equals("0")) {
                     Toast.makeText(v.getContext(), "Nenhum campo pode estar vazio",
                             Toast.LENGTH_LONG).show();
                 } else {
@@ -106,7 +109,7 @@ public class CadastroLanchoneteFragment extends Fragment {
                     editCartaoDebito.setCursorVisible(false);
                     editDinheiro.setCursorVisible(false);
 
-                    fechaTeclado(v);
+                    //fechaTeclado(v);
 
                     Ion.with(v.getContext())
                             .load(URL)
@@ -127,12 +130,16 @@ public class CadastroLanchoneteFragment extends Fragment {
                                     String RETORNO = result.get("CADASTRO").getAsString();
 
                                     try {
-                                        if(RETORNO.equals("EMAIL_ERRO")){
-                                            Toast.makeText(v.getContext(), "Esta lanchonete já está cadastrada!", Toast.LENGTH_LONG).show();
-                                        } else if (RETORNO.equals("SUCESSO")){
-                                            Toast.makeText(v.getContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
-                                        } else {
-                                            Toast.makeText(v.getContext(), "ERRO DESCONHECIDO", Toast.LENGTH_LONG).show();
+                                        switch (RETORNO) {
+                                            case "EMAIL_ERRO":
+                                                Toast.makeText(v.getContext(), "Esta lanchonete já está cadastrada!", Toast.LENGTH_LONG).show();
+                                                break;
+                                            case "SUCESSO":
+                                                Toast.makeText(v.getContext(), "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
+                                                break;
+                                            default:
+                                                Toast.makeText(v.getContext(), "ERRO DESCONHECIDO", Toast.LENGTH_LONG).show();
+                                                break;
                                         }
 
                                     } catch (Exception erro) {
@@ -161,24 +168,25 @@ public class CadastroLanchoneteFragment extends Fragment {
                 }
 
                 LanchonetesFragment lanchonetesFragment= new LanchonetesFragment();
-                getFragmentManager().beginTransaction()
-                        .replace(R.id.frameContainer, lanchonetesFragment,"findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-
+                if (getFragmentManager() != null) {
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.frameContainer, lanchonetesFragment,"findThisFragment")
+                            .addToBackStack(null)
+                            .commit();
+                }
             }
         });
 
         return view;
     }
 
-    private void fechaTeclado(View v) {
-        View view = v.findFocus();
-        if (view != null) {
+    //private void fechaTeclado(View v) {
+        //View view = v.findFocus();
+        //if (view != null) {
             //InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
+        //}
+    //}
 
     private String verificarPagamento() {
         String formaPagamento = "0";

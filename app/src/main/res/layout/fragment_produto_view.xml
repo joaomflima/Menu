@@ -1,142 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    android:orientation="vertical">
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="UselessParent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imageProd"
-            android:layout_width="160dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center"
-            android:layout_weight="1" />
-
-        <LinearLayout
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textTitProd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Título"
-                android:textSize="18sp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textPrecoProd"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="Preço"
-                    android:textAllCaps="false" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
 
-                <TextView
-                    android:id="@+id/textDescProd"
+                <ImageView
+                    android:id="@+id/imageProd"
+                    android:layout_width="80dp"
+                    android:layout_height="70dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_hamburguer"
+                    android:padding="10dp"
+                    android:contentDescription="@string/imagemproduto" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Descrição" />
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textTitProd"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/titulo"
+                        android:textSize="18sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textPrecoProd"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="end"
+                            android:text="@string/preco"
+                            android:textAllCaps="false" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textDescProd"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/descricao" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-    </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/textLanchonete"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_weight="1"
+                        android:text="@string/hint_nome_lanchonete" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textEndLanchonte"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_endereco_lanchonete" />
+
+                <Button
+                    android:id="@+id/btnGoogleMaps"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorButtonsBackground"
+                    android:text="@string/mapa"
+                    android:textColor="@color/colorButtonsText" />
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/textLanchonete"
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="4dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginTop="10dp"
                 android:layout_weight="1"
-                android:text="Nome Lanchonete" />
+                android:text="@string/avaliacoes"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerViewAva"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/textSuaAvaliacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:layout_marginTop="10dp"
+                android:text="@string/sua_avaliacao"
+                android:textSize="20sp" />
+            <RatingBar
+                android:id="@+id/ratingAvaliacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Base.Widget.AppCompat.RatingBar.Small"
+                android:isIndicator="false"
+                android:numStars="5"
+                android:stepSize="0.5"
+                android:rating="0"/>
+            <TextView
+                android:id="@+id/textNomeCad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:text="@string/comentario"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/editAvaliacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:textSize="20sp"
+                android:inputType="textPersonName"
+                android:hint="@string/empty_space" />
+            <Button
+                android:id="@+id/btnCadastrarAvaliacao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@color/colorButtonsBackground"
+                android:padding="20dp"
+                android:text="@string/avaliar"
+                android:textColor="@color/colorButtonsText" />
         </LinearLayout>
-
-        <TextView
-            android:id="@+id/textEndLanchonte"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Endereço Lanchonete" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight="1"
-        android:text="@string/avaliacoes"
-        android:textSize="20sp"
-        android:textStyle="bold" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerViewAva"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
-
-    <RatingBar
-        android:id="@+id/editText3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:numStars="5"
-        android:rating="0"/>
-    <TextView
-        android:id="@+id/textNomeCad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:text="@string/comentario"
-        android:textSize="20sp" />
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:textSize="20sp"
-        android:inputType="textPersonName"/>
-
+    </ScrollView>
 </LinearLayout>

@@ -1,7 +1,9 @@
 package com.una.menu.fragment;
 
 
+import android.app.Activity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,7 @@ import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
 import com.una.menu.R;
 import com.una.menu.model.Lanchonete;
+import com.una.menu.util.MaskEditUtil;
 
 
 /**
@@ -32,7 +35,7 @@ public class ViewLanchoneteFragment extends Fragment {
     ProgressBar progressBar;
 
     // Variaveis para conexão com web service.
-    String HOST = "https://menu-app.000webhostapp.com/webservice";
+    final String HOST = "https://menu-app.000webhostapp.com/webservice";
     // String HOST = "http://localhost/webservice";
 
     public ViewLanchoneteFragment() {
@@ -40,7 +43,7 @@ public class ViewLanchoneteFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
@@ -52,13 +55,18 @@ public class ViewLanchoneteFragment extends Fragment {
         if(bundle != null) {
             lanchonete = (Lanchonete) bundle.getSerializable("LANCHONETE");
         }
-        getActivity().setTitle("Produto" + (lanchonete.getNome() == null ? "" : lanchonete.getNome()));
+        Activity currentActivity = getActivity();
+        if(currentActivity != null)
+            currentActivity.setTitle("Lanchonete: " + ((lanchonete != null ? lanchonete.getNome() : null) == null ? "" : lanchonete.getNome()));
         // Recebe os ID's dos objetos da tela;
         editNomeCad         = view.findViewById(R.id.editNomeCad);
-        editTelefoneCad     = view.findViewById(R.id.editTelefoneCad);
+        editTelefoneCad     = view.findViewById(R.id.editDescricaoCad);
+        editTelefoneCad.addTextChangedListener(MaskEditUtil.mask(editTelefoneCad, MaskEditUtil.FORMAT_FONE));
         editCelularCad      = view.findViewById(R.id.editCelularCad);
+        editCelularCad.addTextChangedListener(MaskEditUtil.mask(editCelularCad, MaskEditUtil.FORMAT_FONE));
         editEnderecoCad     = view.findViewById(R.id.editLanchoneteCad);
         editCepCad          = view.findViewById(R.id.editCepCad);
+        editCepCad.addTextChangedListener(MaskEditUtil.mask(editCepCad, MaskEditUtil.FORMAT_CEP));
         editCidadeCad       = view.findViewById(R.id.editCidadeCad);
         editEstadoCad       = view.findViewById(R.id.editEstadoCad);
         editCartaoCredito   = view.findViewById(R.id.cbCartaoCredito);
@@ -103,7 +111,7 @@ public class ViewLanchoneteFragment extends Fragment {
                 String URL = HOST + "/lanchonete/update.php";
 
                 if (nome.isEmpty() || telefone.isEmpty() || celular.isEmpty() || endereco.isEmpty()
-                        || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty() || id_pagamento == "0") {
+                        || cep.isEmpty() || cidade.isEmpty() || estado.isEmpty() || id_pagamento.equals("0")) {
                     Toast.makeText(v.getContext(), "Nenhum campo pode estar vazio",
                             Toast.LENGTH_LONG).show();
                 } else {
@@ -123,7 +131,7 @@ public class ViewLanchoneteFragment extends Fragment {
                     editCartaoDebito.setCursorVisible(false);
                     editDinheiro.setCursorVisible(false);
 
-                    fechaTeclado(v);
+//                    fechaTeclado(v);
 
                     Ion.with(v.getContext())
                             .load(URL)
@@ -189,7 +197,7 @@ public class ViewLanchoneteFragment extends Fragment {
 
                 String URL = HOST + "/lanchonete/delete.php";
 
-                fechaTeclado(v);
+//                fechaTeclado(v);
 
                 Ion.with(v.getContext())
                         .load(URL)
@@ -231,13 +239,13 @@ public class ViewLanchoneteFragment extends Fragment {
         return view;
     }
 
-    private void fechaTeclado(View v) {
-        View view = v.findFocus();
-        if (view != null) {
-            //InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            //imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
-    }
+//    private void fechaTeclado(View v) {
+//        View view = v.findFocus();
+//        if (view != null) {
+//            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+//            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+//        }
+//    }
 
     private String verificarPagamento() {
         String formaPagamento = "0";

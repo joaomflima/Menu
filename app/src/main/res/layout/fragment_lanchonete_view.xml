@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.CadastroLanchoneteFragment">
+    tools:context=".fragment.CadastroLanchoneteFragment"
+    android:layout_marginTop="20dp">
 
     <!-- TODO: Update blank fragment layout -->
     <ProgressBar
@@ -11,114 +12,188 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="132dp" />
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp" />
+
+    <TextView
+        android:id="@+id/textNomeCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:text="@string/nome"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editNomeCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_below="@+id/textNomeCad"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Nome"
+        android:hint="@string/hint_nome_lanchonete"
         android:inputType="textPersonName" />
+
+    <TextView
+        android:id="@+id/textTelefoneCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editNomeCad"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:text="@string/telefone"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/editDescricaoCad"
+        android:layout_width="174dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textTelefoneCad"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:ems="10"
+        android:hint="@string/mascara_telefone"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textCelularCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editNomeCad"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@id/editCidadeCad"
+        android:layout_toRightOf="@id/editCidadeCad"
+        android:ems="10"
+        android:text="@string/celular"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editCelularCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editNomeCad"
+        android:layout_below="@+id/textTelefoneCad"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginStart="196dp"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Celular"
-        android:inputType="textPhonetic"/>
-
-    <EditText
-        android:id="@+id/editTelefoneCad"
-        android:layout_width="174dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editNomeCad"
-        android:layout_marginEnd="8dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Telefone"
-        android:inputType="textPhonetic" />
+        android:hint="@string/mascara_telefone"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textEnderecoCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editDescricaoCad"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:text="@string/endereco"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editLanchoneteCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTelefoneCad"
+        android:layout_below="@+id/textEnderecoCad"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="Endereço"
-        android:inputType="textPersonName" />
+        android:hint="@string/hint_endereco_lanchonete"
+        android:inputType="textPostalAddress" />
+
+    <TextView
+        android:id="@+id/textCepCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editLanchoneteCad"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:text="@string/cep"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editCepCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editLanchoneteCad"
-        android:layout_marginEnd="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_below="@+id/textCepCad"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:ems="10"
-        android:hint="CEP"
-        android:inputType="textPersonName"
-        tools:layout_marginRight="16dp" />
+        android:hint="@string/mascara_cep"
+        android:inputType="number"
+        tools:layout_marginRight="16dp"
+        android:layout_alignParentLeft="true" />
 
-    <EditText
-        android:id="@+id/editEstadoCad"
+    <TextView
+        android:id="@+id/textCidadeCad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/editCidadeCad"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/editCepCad"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Estado"
-        android:inputType="textPersonName" />
+        android:text="@string/cidade"
+        android:textSize="20sp" />
 
     <EditText
         android:id="@+id/editCidadeCad"
         android:layout_width="177dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editCepCad"
-        android:layout_marginLeft="16dp"
+        android:layout_below="@+id/textCidadeCad"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Cidade"
+        android:inputType="textPersonName"
+        android:layout_marginLeft="16dp" />
+
+    <TextView
+        android:id="@+id/textEstadoCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/editCepCad"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@id/editCidadeCad"
+        android:ems="10"
+        android:text="@string/estado"
+        android:textSize="20sp"
+        android:layout_toRightOf="@id/editCidadeCad" />
+
+    <EditText
+        android:id="@+id/editEstadoCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textCidadeCad"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_toEndOf="@id/editCidadeCad"
+        android:layout_toRightOf="@id/editCidadeCad"
+        android:ems="10"
         android:inputType="textPersonName" />
 
     <TextView
@@ -126,73 +201,95 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/editCidadeCad"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="24dp"
-        android:text="Formas de pagamento"/>
+        android:text="@string/formas_de_pagamento" />
 
     <CheckBox
         android:id="@+id/cbCartaoCredito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView"
-        android:layout_marginLeft="16dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:text="Cartão de Crédito" />
+        android:ems="10"
+        android:text="@string/cartao_de_credito"/>
 
     <CheckBox
         android:id="@+id/cbCartaoDebito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_below="@+id/textView"
-        android:layout_marginLeft="8dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/cbCartaoCredito"
         android:layout_toRightOf="@id/cbCartaoCredito"
-        android:text="Cartão de Debito" />
+        android:text="@string/cartao_de_debito" />
+
+    <CheckBox
+        android:id="@+id/cbRefeicao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cbCartaoCredito"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:text="@string/cartao_refeicao" />
 
     <CheckBox
         android:id="@+id/cbDinheiro"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cbCartaoCredito"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="16dp"
-        android:text="Dinheiro"/>
-
+        android:layout_toEndOf="@id/cbRefeicao"
+        android:layout_toRightOf="@id/cbRefeicao"
+        android:text="@string/dinheiro" />
+    <LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_alignParentBottom="true">
     <Button
+        style="?android:attr/buttonBarButtonStyle"
         android:id="@+id/btnEditarLanchonete"
-        android:layout_width="wrap_content"
+        android:layout_width="0.0dip"
+        android:layout_weight="1.0"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cbDinheiro"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_weight="1"
-        android:text="Editar" />
+        android:layout_marginTop="16dp"
+        android:background="@color/colorButtonsBackground"
+        android:padding="20dp"
+        android:text="@string/editar"
+        android:textColor="@color/colorButtonsText" />
 
     <Button
+        style="?android:attr/buttonBarButtonStyle"
         android:id="@+id/btnExcluirLanchonete"
-        android:layout_width="wrap_content"
+        android:layout_width="0.0dip"
+        android:layout_weight="1.0"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cbDinheiro"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_toRightOf="@id/btnEditarLanchonete"
-        android:layout_weight="1"
-        android:text="Excluir" />
-
+        android:background="@color/colorButtonsBackground"
+        android:padding="20dp"
+        android:text="@string/excluir"
+        android:textColor="@color/colorButtonsText" />
+</LinearLayout>
 </RelativeLayout>

@@ -9,13 +9,6 @@ public class Avaliacao {
     public Avaliacao() {
     }
 
-    //Construtor
-    public Avaliacao(String nota, String comentario, String cliente) {
-        this.nota = nota;
-        this.comentario = comentario;
-        this.cliente = cliente;
-    }
-
     //Get and Setters
     public String getNota() {
         return nota;

@@ -4,108 +4,126 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.CadastroClienteActivity">
+    tools:context=".activity.CadastroClienteActivity"
+    android:layout_marginTop="16dp"
+    android:padding="10dp">
 
+    <TextView
+        android:id="@+id/textNomeCad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/nome"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
     <EditText
         android:id="@+id/editNomeCad"
-        android:layout_width="255dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
         android:ems="10"
-        android:gravity="center"
-        android:hint="Nome"
+        android:hint="@string/nome_usuario"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@id/textNomeCad" />
+    <TextView
+        android:id="@+id/textEmailCad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/email"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editNomeCad" />
     <EditText
         android:id="@+id/editEmailCad"
-        android:layout_width="255dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
         android:ems="10"
-        android:gravity="center"
-        android:hint="E-mail"
+        android:hint="@string/email_usuario"
         android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editNomeCad" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textEmailCad" />
+    <TextView
+        android:id="@+id/textSenhaCad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/senha"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editEmailCad" />
     <EditText
         android:id="@+id/editSenhaCad"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
         android:ems="10"
-        android:hint="Senha"
-        android:gravity="center"
+        android:hint="@string/senha_cadastro"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editEmailCad" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textSenhaCad" />
+    <TextView
+        android:id="@+id/textSenhaConf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:text="@string/confirmar_senha"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/editSenhaCad" />
     <EditText
         android:id="@+id/editSenhaConf"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
-        android:gravity="center"
-        android:hint="Confirme a senha"
+        android:hint="@string/confirmar_senha_hint"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSenhaCad" />
+        app:layout_constraintTop_toBottomOf="@+id/textSenhaConf" />
 
-    <Button
-        android:id="@+id/btnCancelar"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
-        android:text="Cancelar"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSenhaConf" />
+        app:layout_constraintTop_toBottomOf="@+id/editSenhaConf">
 
-    <Button
-        android:id="@+id/btnCadastrar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="35dp"
-        android:text="Cadastrar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editSenhaConf" />
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/btnCadastrar"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1.0"
+            android:background="@color/colorButtonsBackground"
+            android:padding="20dp"
+            android:text="@string/cadastrar"
+            android:textColor="@color/colorButtonsText" />
 
+        <Button
+            style="?android:attr/buttonBarButtonStyle"
+            android:id="@+id/btnCancelar"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_weight="1.0"
+            android:background="@color/colorButtonsBackground"
+            android:padding="20dp"
+            android:text="@string/cancelar"
+            android:textColor="@color/colorButtonsText" />
+    </LinearLayout>
     <ProgressBar
         android:id="@+id/progressCad"
         style="?android:attr/progressBarStyle"

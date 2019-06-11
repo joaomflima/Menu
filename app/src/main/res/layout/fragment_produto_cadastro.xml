@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.CadastroProdutoFragment">
+    tools:context=".fragment.CadastroProdutoFragment"
+    android:layout_marginTop="20dp">
 
     <!-- TODO: Update blank fragment layout -->
     <ProgressBar
@@ -17,80 +18,131 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="132dp" />
 
+    <TextView
+        android:id="@+id/textNomeCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:text="@string/nome"
+        android:textSize="20sp" />
     <EditText
         android:id="@+id/editNomeCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textNomeCad"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_weight="1"
         android:ems="10"
-        android:hint="Nome"
+        android:hint="@string/nome_produto"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:id="@+id/textDescricaoCad"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editNomeCad"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:ems="10"
+        android:text="@string/descricao"
+        android:textSize="20sp" />
+    <EditText
+        android:id="@+id/editDescricaoCad"
+        android:layout_width="177dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textDescricaoCad"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:ems="10"
+        android:hint="Descricão"
+        android:inputType="textPhonetic" />
+
+    <TextView
+        android:id="@+id/textPrecoCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editNomeCad"
+        android:layout_marginEnd="16dp"
+        android:layout_toEndOf="@id/textDescricaoCad"
+        android:layout_toRightOf="@id/textDescricaoCad"
+        android:ems="10"
+        android:text="@string/preco"
+        android:textSize="20sp"
+        android:layout_marginRight="16dp" />
     <EditText
         android:id="@+id/editPrecoCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/editNomeCad"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textPrecoCad"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginStart="196dp"
-        android:layout_marginTop="16dp"
+        android:layout_toEndOf="@id/editDescricaoCad"
+        android:layout_toRightOf="@id/editDescricaoCad"
         android:ems="10"
         android:hint="Preço"
-        android:inputType="textPhonetic" />
+        android:inputType="numberDecimal" />
 
-    <EditText
-        android:id="@+id/editTelefoneCad"
-        android:layout_width="174dp"
+    <TextView
+        android:id="@+id/textLanchoneteCad"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editNomeCad"
-        android:layout_marginEnd="8dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="8dp"
+        android:layout_below="@id/editDescricaoCad"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
-        android:hint="Descricão"
-        android:inputType="textPhonetic" />
-
-    <EditText
+        android:text="@string/lanchonete"
+        android:textSize="20sp" />
+    <Spinner
         android:id="@+id/editLanchoneteCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editTelefoneCad"
+        android:layout_below="@+id/textLanchoneteCad"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Lanchonete"
-        android:inputType="textPersonName" />
+        android:hint="@string/selecione_uma_lanchonete"
+        android:inputType="textPersonName"
+        android:layout_alignParentStart="true"
+        android:textSize="20sp" />
 
+    <TextView
+        android:id="@+id/textCategoriaCad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editLanchoneteCad"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:text="@string/categoria"
+        android:textSize="20sp" />
     <Spinner
-        android:id="@+id/editCepCad"
+        android:id="@+id/editCategoriaCad"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/editLanchoneteCad"
+        android:layout_below="@+id/textCategoriaCad"
         android:layout_marginEnd="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="Categoria"
+        android:hint="@string/selecione_uma_categoria"
         android:inputType="textPersonName"
-        tools:layout_marginRight="16dp" />
+        tools:layout_marginRight="16dp"
+        android:layout_alignParentStart="true"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/btnCadastrarProduto"

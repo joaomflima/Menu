@@ -24,13 +24,13 @@ public class CadastroClienteActivity extends AppCompatActivity {
     ProgressBar progressCad;
 
     // Variaveis para conexão com web service.
-    String HOST = "https://menu-app.000webhostapp.com";
+    final String HOST = "https://menu-app.000webhostapp.com";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_cliente);
-
+        setTitle("Cadastro Usuário");
         // Recebe os ID's dos objetos da tela;
         editNomeCad = findViewById(R.id.editNomeCad);
         editEmailCad = findViewById(R.id.editEmailCad);
@@ -93,16 +93,18 @@ public class CadastroClienteActivity extends AppCompatActivity {
                                         String RETORNO = result.get("CADASTRO").getAsString();
 
                                         try {
-                                            if(RETORNO.equals("EMAIL_ERRO")){
-                                                Toast.makeText(CadastroClienteActivity.this, "Este email já está cadastrado!", Toast.LENGTH_LONG).show();
-                                            } else if (RETORNO.equals("SUCESSO")){
-                                                Toast.makeText(CadastroClienteActivity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
-
-                                                Intent abreLogin = new Intent(CadastroClienteActivity.this, LoginActivity.class);
-                                                startActivity(abreLogin);
-
-                                            } else {
-                                                Toast.makeText(CadastroClienteActivity.this, "ERRO DESCONHECIDO", Toast.LENGTH_LONG).show();
+                                            switch (RETORNO) {
+                                                case "EMAIL_ERRO":
+                                                    Toast.makeText(CadastroClienteActivity.this, "Este email já está cadastrado!", Toast.LENGTH_LONG).show();
+                                                    break;
+                                                case "SUCESSO":
+                                                    Toast.makeText(CadastroClienteActivity.this, "Cadastro realizado com sucesso!", Toast.LENGTH_LONG).show();
+                                                    Intent abreLogin = new Intent(CadastroClienteActivity.this, LoginActivity.class);
+                                                    startActivity(abreLogin);
+                                                    break;
+                                                default:
+                                                    Toast.makeText(CadastroClienteActivity.this, "ERRO DESCONHECIDO", Toast.LENGTH_LONG).show();
+                                                    break;
                                             }
 
                                         } catch (Exception erro) {
@@ -133,7 +135,9 @@ public class CadastroClienteActivity extends AppCompatActivity {
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
     }
 

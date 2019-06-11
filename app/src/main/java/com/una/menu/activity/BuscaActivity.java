@@ -29,29 +29,26 @@ import java.util.List;
 
 public class BuscaActivity extends AppCompatActivity {
 
-    private TextView textView_nome;
-    private SearchView searchProduto;
-    private RecyclerView recyclerProdutos;
-    private List<Produto> listaProduto = new ArrayList<>();
-    private String HOST = "https://menu-app.000webhostapp.com/webservice";
+    private final List<Produto> listaProduto = new ArrayList<>();
+    private final String HOST = "https://menu-app.000webhostapp.com/webservice";
     private ProgressBar progressPesquisa;
-    private Button button_teste;
 
     //Configurar adapter
-    ProdutoAdapter produtoAdapter = new ProdutoAdapter( listaProduto );
+    final ProdutoAdapter produtoAdapter = new ProdutoAdapter( listaProduto );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_busca);
 
-        textView_nome = findViewById(R.id.textView_nome);
-        searchProduto = findViewById(R.id.searchProduto);
-        recyclerProdutos = findViewById(R.id.recyclerViewProdutos);
+        TextView textView_nome = findViewById(R.id.textView_nome);
+        SearchView searchProduto = findViewById(R.id.searchProduto);
+        RecyclerView recyclerProdutos = findViewById(R.id.recyclerViewProdutos);
         progressPesquisa = findViewById(R.id.progressPesquisa);
 
-        String nomeUsuario = getIntent().getExtras().getString("nome_usuario");
-        textView_nome.setText(nomeUsuario);
+        Bundle extras = getIntent().getExtras();
+        if(extras != null)
+            textView_nome.setText(extras.getString("nome_usuario"));
 
         // Configurar SearchView
         searchProduto.setQueryHint("Buscar Produtos");
@@ -89,7 +86,7 @@ public class BuscaActivity extends AppCompatActivity {
 
         // teste menu lateral --------------
 
-        button_teste = findViewById(R.id.button_teste);
+        Button button_teste = findViewById(R.id.button_teste);
 
         button_teste.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -200,7 +197,9 @@ public class BuscaActivity extends AppCompatActivity {
         View view = this.getCurrentFocus();
         if (view != null) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            if (imm != null) {
+                imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+            }
         }
     }
 }

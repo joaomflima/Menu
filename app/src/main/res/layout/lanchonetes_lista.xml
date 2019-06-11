@@ -12,10 +12,10 @@
 
         <TextView
             android:id="@+id/textNome"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="5"
-            android:text="Nome"
+            android:text="@string/nome"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -28,10 +28,10 @@
 
         <TextView
             android:id="@+id/textEndereco"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Endereço" />
+            android:text="@string/endereco" />
 
     </LinearLayout>
 
@@ -45,8 +45,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
-            android:text="Cidade"
+            android:gravity="end"
+            android:text="@string/cidade"
             android:textAllCaps="false" />
 
         <TextView
@@ -54,15 +54,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=" - " />
+            android:text="@string/hifenComEspaco" />
 
         <TextView
             android:id="@+id/textEstado"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
-            android:text="Estado"
+            android:gravity="end"
+            android:text="@string/estado"
             android:textAllCaps="false" />
     </LinearLayout>
 
@@ -76,8 +76,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
-            android:text="Telefone"
+            android:gravity="end"
+            android:text="@string/telefone"
             android:textAllCaps="false" />
 
         <TextView
@@ -85,15 +85,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=" / " />
+            android:text="@string/barraComEspaco" />
 
         <TextView
             android:id="@+id/textCelular"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:gravity="right"
-            android:text="Celular"
+            android:gravity="end"
+            android:text="@string/celular"
             android:textAllCaps="false" />
     </LinearLayout>
 </LinearLayout>
